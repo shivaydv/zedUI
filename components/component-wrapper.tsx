@@ -27,7 +27,7 @@ export const ComponentWrapper = ({
       <div className="flex items-center justify-end gap-2 p-4 absolute right-0">
         <Button
           onClick={handleClick}
-          className="flex items-center rounded-lg px-3 py-1"
+          className="flex items-center rounded-lg px-3 py-1 cursor-pointer z-20"
           variant="ghost"
           title="Restart Component"
           aria-label="Restart Component"
@@ -42,7 +42,7 @@ export const ComponentWrapper = ({
         </Button>
       </div>
 
-      <div className="flex min-h-[350px] w-full items-center justify-center p-10 ">
+      <div className="flex min-h-[350px] w-full items-center justify-center  relative ">
         {children}
       </div>
     </div>

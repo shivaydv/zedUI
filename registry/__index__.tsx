@@ -6,4 +6,40 @@
 import * as React from "react"
 
 export const Index: Record<string, any> = {
+  "dot-background": {
+    name: "dot-background",
+    description: "A demo showcasing a dot background component.",
+    type: "registry:component",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/axiomite-ui/dot-background.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/axiomite-ui/dot-background.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "dot-background-demo": {
+    name: "dot-background-demo",
+    description: "A demo showcasing a dot background component.",
+    type: "registry:component",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry//demo/dot-background-demo.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry//demo/dot-background-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   }

@@ -1,0 +1,14 @@
+{
+  "name": "dot-background-demo",
+  "type": "registry:component",
+  "title": "Dot Background Demo",
+  "description": "A demo showcasing a dot background component.",
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import React from \"react\";\r\nimport DotBackground from \"../axiomite-ui/dot-background\";\r\n\r\nconst DotBackgroundDemo = () => {\r\n  return (\r\n    <div className=\"relative h-96 w-full\" >\r\n      <DotBackground />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DotBackgroundDemo;\r\n",
+      "path": "/demo/dot-background-demo.tsx",
+      "target": "/demo/dot-background-demo.tsx"
+    }
+  ]
+}

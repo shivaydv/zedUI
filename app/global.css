@@ -17,7 +17,7 @@
 @layer utilities {
 
   #nd-sidebar{
-    border: none;
+    background-color: hsl(var(--background)) !important;
   }
   #nd-sidebar p {
     font-weight: 600;

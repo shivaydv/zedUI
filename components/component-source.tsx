@@ -3,7 +3,7 @@ import path from "node:path";
 import * as React from "react";
 
 import { getRegistryItem } from "@/lib/registry";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 
 export async function ComponentSource({
   name,
@@ -39,5 +39,5 @@ export async function ComponentSource({
 
   const lang = language ?? title?.split(".").pop() ?? "tsx";
 
-  return <DynamicCodeBlock lang={lang} code={code} />;
+  return <DynamicCodeBlock  lang={lang} code={code} />;
 }
