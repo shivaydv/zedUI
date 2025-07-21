@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/vitepress.css";
+@import "fumadocs-ui/css/preset.css";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --primary: #3451b2;
+  --primary-foreground: #ffffff;
+
+  --background: #fafaf7;
+  --foreground: #1f1f1f;
+  --card: #ffffff;
+  --card-foreground: #1f1f1f;
+  --popover: #ffffff;
+  --popover-foreground: #1f1f1f;
+  --secondary: #ecebe6;
+  --secondary-foreground: #1f1f1f;
+  --muted: #f1f0eb;
+  --muted-foreground: #595959;
+  --accent: #f1f0eb;
+  --accent-foreground: #1f1f1f;
+  --destructive: #e5484d;
+  --border: #e2e2dc;
+  --input: #e2e2dc;
+  --ring: #cfcfcf;
+}
+
+.dark {
+  --primary: #3451b2;
+  --primary-foreground: #000000;
+
+  --background: #111111;
+  --foreground: #ededed;
+  --card: #181818;
+  --card-foreground: #ededed;
+  --popover: #1a1a1a;
+  --popover-foreground: #ededed;
+  --secondary: #1c1c1c;
+  --secondary-foreground: #f2f2f2;
+  --muted: #1c1c1c;
+  --muted-foreground: #a0a0a0;
+  --accent: #1c1c1c;
+  --accent-foreground: #f2f2f2;
+  --destructive: #ff6b6b;
+  --border: #2e2e2e;
+  --input: #2e2e2e;
+  --ring: #5a5a5a;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+/*  === FumaDocs === */
+
+:root {
+  /* === synced FumaDocs colors === */
+  --color-fd-background: var(--background);
+  --color-fd-foreground: var(--foreground);
+  --color-fd-card: var(--background);
+  /*--color-fd-primary: var(--primary);
+  --color-fd-accent: var(--accent);
+  --color-fd-accent-foreground: var(--accent-foreground);
+  --color-fd-card-foreground: var(--card-foreground);
+  --color-fd-muted: #1f1f1f10;
+  --color-fd-muted-foreground: var(--muted-foreground);
+  --color-fd-secondary: var(--secondary);
+  --color-fd-secondary-foreground: var(--secondary-foreground);
+  --color-fd-popover: var(--popover);
+  --color-fd-popover-foreground: var(--popover-foreground);
+  --color-fd-border: var(--border); */
+}
+
+#nd-sidebar {
+  /* @apply "bg-background border-r border-r-2" */
+
+  background-color: var(--background) !important;
+  border-right: 1px solid var(--border) !important;
+}
+#nd-sidebar p {
+  font-weight: 600;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+#nd-sidebar-mobile p {
+  font-weight: 600;
+  margin-top: 1rem;
+}

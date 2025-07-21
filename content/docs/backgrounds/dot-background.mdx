@@ -1,0 +1,61 @@
+---
+title : Dot Pattern
+---
+
+<ComponentPreview name="dot-background-demo" display="both" reload/>
+
+
+## Installation
+
+<Tabs items={['Cli',"Manual"]} defaultIndex={0}>
+  <Tab value="Cli">
+    ```package-install
+npx shadcn@latest add https://axiomiteui.vercel.app/r/dot-background.json
+    ```
+  </Tab>
+  <Tab value="Manual">
+
+  Copy and paste the following code into your project.
+<ComponentPreview name="dot-background" display="code" reload title="components/dot-background.tsx" />
+
+  </Tab>
+</Tabs>
+
+## Usage
+
+<Callout variant="info">
+  This component must be placed inside a container with <code>relative</code> positioning.  
+  Your foreground content should have <code>relative z-10</code> to appear above the dots.
+</Callout>
+
+## Props
+
+<TypeTable
+  type={{
+    dotColor: {
+      description: "The size of the avatar",
+      type: "string",
+      default: 'var(--color-muted-foreground)',
+    },
+    dotSize: {
+      description: "Tooltip content or props for the avatar",
+      type: "number",
+      default: "0.8",
+    },
+    gap: {
+      description: "Tooltip content or props for the avatar",
+      type: "number",
+      default: "32",
+    },
+    mask: {
+      description: "Tooltip content or props for the avatar",
+      type: "boolean",
+      default: "true",
+    },
+    className: {
+      description: "Additional CSS classes",
+      type: "string",
+      default: "",
+    },
+  }}
+/>

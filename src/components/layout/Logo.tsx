@@ -1,0 +1,60 @@
+"use client";
+
+import { cn } from "@/src/lib/utils";
+
+const Logo = ({
+  type = "both",
+  className,
+  iconClassName,
+  textClassName,
+}: {
+  type?: "icon" | "text" | "both";
+  className?: string;
+  iconClassName?: string;
+  textClassName?: string;
+}) => {
+  if (type === "icon") {
+    return <LogoIcon className={`${iconClassName} ${className}`} />;
+  } else if (type === "text") {
+    return (
+      <span
+        className={`${textClassName} ${className} font-semibold shrink-0 text-xl`}
+      >
+        Axiomite
+      </span>
+    );
+  }
+  return (
+    <div className={`flex items-center  gap-1 ${className}`}>
+      <LogoIcon className={`h-5 w-5    ${iconClassName}`} />
+      <span
+        className={`text-xl  font-semibold shrink-0  ${textClassName}`}
+      >
+        Axiomite UI
+      </span>
+    </div>
+  );
+};
+
+export const LogoIcon = ({ className }: { className?: string }) => {
+  // const gradientId = useId();
+  return (
+    <svg
+      width="50"
+      height="50"
+      viewBox="0 0 50 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn("h-6 w-6 fill-black dark:fill-white", className)}
+    >
+      <path
+        d="M25.0002 3.0226e-05C26.0127 3.0226e-05 27.0251 0.504195 27.6043 1.51044L35.2459 14.7541L48.4894 22.3958C48.9483 22.6582 49.3298 23.0373 49.595 23.4946C49.8603 23.952 50 24.4712 50 24.9999C50 25.5286 49.8603 26.0479 49.595 26.5052C49.3298 26.9625 48.9483 27.3416 48.4894 27.6041L35.2459 35.2457L27.6043 48.4894C27.3418 48.9483 26.9627 49.3297 26.5054 49.595C26.0481 49.8603 25.5288 50 25.0002 50C24.4715 50 23.9522 49.8603 23.4949 49.595C23.0376 49.3297 22.6585 48.9483 22.396 48.4894L14.7545 35.2457L1.51092 27.6041C-0.503639 26.4707 -0.503639 23.552 1.51092 22.3958L14.7545 14.7541L22.396 1.51044C22.6567 1.04997 23.0354 0.66729 23.4931 0.401812C23.9508 0.136333 24.471 -0.00235383 25.0002 3.0226e-05ZM24.9877 8.82708L8.82748 25.0124L25.0127 41.1728L41.1729 25.0124L24.9877 8.82708ZM25.0127 15.3104L34.7125 25.0124L25.0127 34.7124L15.3107 25.0124L25.0127 15.3104Z"
+        
+      />
+    </svg>
+  );
+};
+
+export default Logo;
+
+

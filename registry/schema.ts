@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 // Note: if you edit the schema here, you must also edit the schema in the
 // apps/www/public/schema/registry-item.json file.
@@ -17,7 +17,7 @@ export const registryItemTypeSchema = z.enum([
   // Internal use only
   "registry:example",
   "registry:internal",
-])
+]);
 
 export const registryItemFileSchema = z.discriminatedUnion("type", [
   // Target is required for registry:file and registry:page
@@ -33,7 +33,7 @@ export const registryItemFileSchema = z.discriminatedUnion("type", [
     type: registryItemTypeSchema.exclude(["registry:file", "registry:page"]),
     target: z.string().optional(),
   }),
-])
+]);
 
 export const registryItemTailwindSchema = z.object({
   config: z
@@ -43,13 +43,13 @@ export const registryItemTailwindSchema = z.object({
       plugins: z.array(z.string()).optional(),
     })
     .optional(),
-})
+});
 
 export const registryItemCssVarsSchema = z.object({
   theme: z.record(z.string(), z.string()).optional(),
   light: z.record(z.string(), z.string()).optional(),
   dark: z.record(z.string(), z.string()).optional(),
-})
+});
 
 export const registryItemCssSchema = z.record(
   z.string(),
@@ -62,7 +62,7 @@ export const registryItemCssSchema = z.record(
       ),
     ])
   )
-)
+);
 
 export const registryItemSchema = z.object({
   $schema: z.string().optional(),
@@ -82,31 +82,31 @@ export const registryItemSchema = z.object({
   meta: z.record(z.string(), z.any()).optional(),
   docs: z.string().optional(),
   categories: z.array(z.string()).optional(),
-})
+});
 
-export type RegistryItem = z.infer<typeof registryItemSchema>
+export type RegistryItem = z.infer<typeof registryItemSchema>;
 
 export const registrySchema = z.object({
   name: z.string(),
   homepage: z.string(),
   items: z.array(registryItemSchema),
-})
+});
 
-export type Registry = z.infer<typeof registrySchema>
+export type Registry = z.infer<typeof registrySchema>;
 
-export const registryIndexSchema = z.array(registryItemSchema)
+export const registryIndexSchema = z.array(registryItemSchema);
 
 export const stylesSchema = z.array(
   z.object({
     name: z.string(),
     label: z.string(),
   })
-)
+);
 
 export const iconsSchema = z.record(
   z.string(),
   z.record(z.string(), z.string())
-)
+);
 
 export const registryBaseColorSchema = z.object({
   inlineColors: z.object({
@@ -117,7 +117,7 @@ export const registryBaseColorSchema = z.object({
   cssVarsV4: registryItemCssVarsSchema.optional(),
   inlineColorsTemplate: z.string(),
   cssVarsTemplate: z.string(),
-})
+});
 
 export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
   dependencies: true,
@@ -127,4 +127,4 @@ export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
   cssVars: true,
   css: true,
   docs: true,
-})
+});

@@ -11,11 +11,7 @@ export const Index: Record<string, any> = {
     description: "A demo showcasing a dot background component.",
     type: "registry:component",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/axiomite-ui/dot-background.tsx",
-      type: "registry:component",
-      target: ""
-    }],
+    content: ["import React from \"react\";\r\n\r\ntype DotBackgroundProps = {\r\n  dotColor?: string; // rgba() or hex\r\n  dotSize?: number; // px\r\n  gap?: number; // px between dots\r\n  mask?: boolean;\r\n  className?: string;\r\n};\r\n\r\nconst DotBackground: React.FC<DotBackgroundProps> = ({\r\n  dotColor = \"var(--color-muted-foreground)\", // Default color\r\n  dotSize = 0.8,\r\n  gap = 32,\r\n  mask = true,\r\n  className,\r\n}) => {\r\n  const backgroundImage = `radial-gradient(at center center, ${dotColor} ${dotSize}px, transparent 0)`;\r\n\r\n  const maskStyle = mask\r\n    ? {\r\n        maskImage: \"radial-gradient(circle at center, white 10%, transparent 90%)\",\r\n        WebkitMaskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\r\n      }\r\n    : {};\r\n\r\n  return (\r\n    <div\r\n      className={`absolute inset-0 pointer-events-none z-0 ${className}`}\r\n      style={{\r\n        backgroundImage: backgroundImage,\r\n        backgroundSize: `${gap}px ${gap}px`,\r\n        backgroundRepeat: \"repeat\",\r\n        ...maskStyle,\r\n      }}\r\n    />\r\n  );\r\n};\r\n\r\nexport default DotBackground;\r\n"],
     component: React.lazy(async () => {
       const mod = await import("@/registry/axiomite-ui/dot-background.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
@@ -29,11 +25,7 @@ export const Index: Record<string, any> = {
     description: "A demo showcasing a dot background component.",
     type: "registry:component",
     registryDependencies: undefined,
-    files: [{
-      path: "registry//demo/dot-background-demo.tsx",
-      type: "registry:component",
-      target: ""
-    }],
+    content: ["import React from \"react\";\r\nimport DotBackground from \"../axiomite-ui/dot-background\";\r\n\r\nconst DotBackgroundDemo = () => {\r\n  return (\r\n    <div className=\"relative h-[50vh] w-full\"> {/* Parent */ }\r\n      <DotBackground />\r\n      <div className=\" flex items-center justify-center w-full h-full z-10 relative\">\r\n        {/* Children or section */}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DotBackgroundDemo;\r\n"],
     component: React.lazy(async () => {
       const mod = await import("@/registry//demo/dot-background-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
