@@ -6,7 +6,7 @@
   "files": [
     {
       "type": "registry:component",
-      "content": "import React from \"react\";\r\nimport DotBackground from \"../axiomite-ui/dot-background\";\r\n\r\nconst DotBackgroundDemo = () => {\r\n  return (\r\n    <div className=\"relative h-[50vh] w-full\"> {/* Parent */ }\r\n      <DotBackground />\r\n      <div className=\" flex items-center justify-center w-full h-full z-10 relative\">\r\n        {/* Children or section */}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DotBackgroundDemo;\r\n",
+      "content": "import React from \"react\";\r\nimport DotBackground from \"../zedUI/dot-background\";\r\n\r\nconst DotBackgroundDemo = () => {\r\n  return (\r\n    <div className=\"relative h-[50vh] w-full\"> {/* Parent */ }\r\n      <DotBackground />\r\n      <div className=\" flex items-center justify-center w-full h-full z-10 relative\">\r\n        {/* Children or section */}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DotBackgroundDemo;\r\n",
       "path": "/demo/dot-background-demo.tsx",
       "target": "/demo/dot-background-demo.tsx"
     }

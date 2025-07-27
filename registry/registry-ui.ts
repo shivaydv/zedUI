@@ -1,6 +1,6 @@
 import { Registry } from "./schema";
 
-export const AxiomiteUI: Registry["items"] = [
+export const ZedUI: Registry["items"] = [
   {
     name: "dot-background",
     title: "Dot Background",
@@ -8,7 +8,7 @@ export const AxiomiteUI: Registry["items"] = [
     type: "registry:component",
     files: [
       {
-        path: "axiomite-ui/dot-background.tsx",
+        path: "zedUI/dot-background.tsx",
         target:"components/dot-background.tsx",
         type: "registry:component",
       },

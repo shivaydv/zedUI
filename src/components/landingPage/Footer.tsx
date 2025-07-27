@@ -12,7 +12,7 @@ const links = [
       },
       {
         title: "Community",
-        href: "https://github.com/shivaydv/axiomite-ui/discussions",
+        href: "https://github.com/shivaydv/zedUI/discussions",
       },
       // {
       //   title: "Showcase",
@@ -100,7 +100,7 @@ export default function Footer() {
                 "linear-gradient(to top, transparent 0%, var(--foreground) 100%)",
             }}
           >
-            Axiomite UI
+            Zed UI
           </span>
         </div>
       </div>

@@ -16,7 +16,7 @@ export const baseOptions: BaseLayoutProps = {
     title: <Logo />,
     transparentMode: "always",
   },
-  githubUrl: "https://github.com/shivaydv/axiomite-ui",
+  githubUrl: "https://github.com/shivaydv/ZedUI",
   searchToggle: { enabled: true },
   themeSwitch: {
     // component: <ThemeToggle />,
@@ -50,7 +50,7 @@ export const baseOptions: BaseLayoutProps = {
     // },
     {
       text: "Community",
-      url: "https://github.com/shivaydv/axiomite-ui/discussions",
+      url: "https://github.com/shivaydv/zedUI/discussions",
       external: true,
       icon: <Users />,
     },

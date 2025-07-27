@@ -122,9 +122,9 @@ function FAQItem({
 export default function FAQSection() {
   const faqs: Omit<FAQItemProps, "index">[] = [
     {
-      question: "What makes Axiomite UI unique?",
+      question: "What makes Zed UI unique?",
       answer:
-        "Axiomite UI stands out through its minimal design, powerful component library, and seamless integration options. Our goal is to simplify your workflow while giving you everything you need to build polished, professional interfaces.",
+        "Zed UI stands out through its minimal design, powerful component library, and seamless integration options. Our goal is to simplify your workflow while giving you everything you need to build polished, professional interfaces.",
     },
     {
       question: "How can I customize the components?",
@@ -137,7 +137,7 @@ export default function FAQSection() {
         "Yes, all components are designed to work seamlessly with both light and dark modes. They automatically adapt to your site's theme settings, providing a consistent user experience regardless of the user's preference.",
     },
     {
-      question: "How can I get started with Axiomite UI?",
+      question: "How can I get started with Zed UI?",
       answer:
         "You can get started by browsing our component library and copying the code for the components you need. Our documentation provides clear instructions for installation and usage, and you can always reach out to our support team if you need assistance.",
     },
@@ -147,7 +147,7 @@ export default function FAQSection() {
         "We welcome contributions from the community! You can contribute by submitting pull requests on our GitHub repository. Please check our contribution guidelines for more details on how to get involved.",
     },
     {
-      question: "Can I use Axiomite UI for commercial projects?",
+      question: "Can I use Zed UI for commercial projects?",
       answer:
         "Absolutely! It is free to use for both personal and commercial projects. There are no licensing fees or attribution requirements—just build and launch your MVP faster than ever before.",
     },
@@ -175,7 +175,7 @@ export default function FAQSection() {
           Frequently Asked Questions
         </h2>
         <p className=" text-fd-muted-foreground">
-          Everything you need to know about Axiomite UI
+          Everything you need to know about Zed UI
         </p>
       </motion.div>
 

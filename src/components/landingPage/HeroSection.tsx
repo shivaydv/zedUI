@@ -39,7 +39,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0 }}
             className="text-balance font-semibold bg-gradient-to-tl from-fd-primary/10 via-fd-foreground/85 to-fd-foreground/100 bg-clip-text text-center text-4xl tracking-tighter text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Code Less. Build More.
+          Build stunning websites with ease.
           </motion.h1>
 
           {/* Description */}
@@ -49,9 +49,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5,delay: 0 }}
             className="mx-auto mt-6 max-w-2xl text-center text-lg text-fd-muted-foreground"
           >
-            A modern UI component library designed to help developers create
-            stunning web applications with minimal effort. Fully customizable,
-            responsive, and accessible.
+            A modern UI library for Design Engineers — ship faster with customizable UI components.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -69,7 +67,7 @@ export default function HeroSection() {
               <ArrowUpRight className="ml-2 text-xl" />
             </Link>
             <Link
-              href="https://github.com/shivaydv/axiomite-ui"
+              href="https://github.com/shivaydv/ZedUI"
               className="inline-flex w-full md:max-w-sm items-center justify-center px-6 py-3 text-sm font-semibold text-fd-foreground bg-fd-background border border-fd-foreground h-10 md:h-12 md:w-fit rounded-full hover:bg-fd-foreground hover:text-fd-background  transition-all focus:outline-none ease-in-out "
             >
               Star on Github

@@ -1,5 +1,5 @@
 import React from "react";
-import DotBackground from "../axiomite-ui/dot-background";
+import DotBackground from "@/registry/zedUI/dot-background";
 
 const DotBackgroundDemo = () => {
   return (

@@ -12,7 +12,8 @@ const poppins = Poppins({
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Axiomite UI",
+  title: "Zed UI",
+  description: "Build stunning websites with ease. A modern UI library for Design Engineers — ship faster with customizable UI components.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${poppins.className}`} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <RootProvider theme={{ defaultTheme: "dark" }}>{children}</RootProvider>
       </body>
     </html>

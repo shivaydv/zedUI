@@ -1,4 +1,4 @@
-import DotBackground from "@/registry/axiomite-ui/dot-background";
+import DotBackground from "@/registry/zedUI/dot-background";
 import React from "react";
 
 const page = () => {

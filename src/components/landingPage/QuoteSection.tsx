@@ -40,7 +40,7 @@ const QuoteSection = () => {
             // variants={itemVariants}
             className="text-center text-xl sm:text-2xl md:text-3xl md:leading-normal max-w-3xl"
           >
-            Every component in Axiomite UI is something I&apos;ve personally
+            Every component in Zed UI is something I&apos;ve personally
             needed and fine-tuned for real-world projects.
           </motion.p>
           <motion.div
@@ -48,7 +48,7 @@ const QuoteSection = () => {
             className="mt-6 flex flex-col items-center md:mt-10"
           >
             <p className="font-semibold ">Shiva Yadav</p>
-            <p className="text-fd-muted-foreground">Creator of Axiomite UI</p>
+            <p className="text-fd-muted-foreground">Creator of Zed UI</p>
           </motion.div>
         </div>
       </motion.blockquote>
