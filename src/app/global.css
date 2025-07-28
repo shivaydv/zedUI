@@ -145,21 +145,30 @@
 }
 
 #nd-sidebar {
-  /* @apply "bg-background border-r border-r-2" */
-
   background-color: var(--background) !important;
   border-right: 1px solid var(--border) !important;
+  z-index: 51;
+}
+#nd-sidebar-mobile {
+  z-index: 51;
 }
 #nd-sidebar p {
   font-weight: 600;
   margin-top: 0.8rem;
   margin-bottom: 0.5rem;
+
 }
 #nd-sidebar-mobile p {
   font-weight: 600;
   margin-top: 1rem;
+  
 }
-/*  ---break--- */
+
+#nd-subnav{
+  z-index: 50;
+}
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
