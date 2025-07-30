@@ -8,12 +8,26 @@ import * as React from "react"
 export const Index: Record<string, any> = {
   "dot-background": {
     name: "dot-background",
-    description: "A demo showcasing a dot background component.",
+    description: "A dot background component.",
     type: "registry:component",
     registryDependencies: undefined,
     content: ["import React from \"react\";\r\n\r\ntype DotBackgroundProps = {\r\n  dotColor?: string; // rgba() or hex\r\n  dotSize?: number; // px\r\n  gap?: number; // px between dots\r\n  mask?: boolean;\r\n  className?: string;\r\n};\r\n\r\nconst DotBackground: React.FC<DotBackgroundProps> = ({\r\n  dotColor = \"var(--color-muted-foreground)\", // Default color\r\n  dotSize = 0.8,\r\n  gap = 32,\r\n  mask = true,\r\n  className,\r\n}) => {\r\n  const backgroundImage = `radial-gradient(at center center, ${dotColor} ${dotSize}px, transparent 0)`;\r\n\r\n  const maskStyle = mask\r\n    ? {\r\n        maskImage: \"radial-gradient(circle at center, white 10%, transparent 90%)\",\r\n        WebkitMaskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\r\n      }\r\n    : {};\r\n\r\n  return (\r\n    <div\r\n      className={`absolute inset-0 pointer-events-none z-0 ${className}`}\r\n      style={{\r\n        backgroundImage: backgroundImage,\r\n        backgroundSize: `${gap}px ${gap}px`,\r\n        backgroundRepeat: \"repeat\",\r\n        ...maskStyle,\r\n      }}\r\n    />\r\n  );\r\n};\r\n\r\nexport default DotBackground;\r\n"],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/zedUI/dot-background")
+      const mod = await import("@/registry/zedUI/dot-background.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "faq": {
+    name: "faq",
+    description: "A FAQ component.",
+    type: "registry:component",
+    registryDependencies: undefined,
+    content: ["\"use client\";\r\n\r\nimport { useState, useRef } from \"react\";\r\nimport { motion, AnimatePresence } from \"motion/react\";\r\nimport { ChevronDown } from \"lucide-react\";\r\nimport { cn } from \"@/src/lib/utils\";\r\n\r\nexport interface FAQItem {\r\n  question: string;\r\n  answer: string;\r\n}\r\n\r\ninterface FAQListProps {\r\n  items: FAQItem[];\r\n  className?: string;\r\n  stagger?: boolean;\r\n  delay?: number;\r\n  animated?: boolean;\r\n}\r\n\r\nexport function FAQList({\r\n  items,\r\n  className,\r\n  stagger = true,\r\n  delay,\r\n  animated,\r\n}: FAQListProps) {\r\n  const ref = useRef(null);\r\n\r\n  return (\r\n    <div ref={ref} className={cn(\"space-y-2 w-full  \", className)}>\r\n      {items.map((item, index) => (\r\n        <SingleFAQItem\r\n          key={index}\r\n          question={item.question}\r\n          answer={item.answer}\r\n          index={index}\r\n          delay={stagger ? delay : 0} // Use stagger delay if enabled\r\n          animated={animated} // Pass stagger prop to control animation\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n\r\nfunction SingleFAQItem({\r\n  question,\r\n  answer,\r\n  index,\r\n  delay = 0.15,\r\n  animated = true,\r\n}: FAQItem & { index: number; delay?: number; animated?: boolean }) {\r\n  const [isOpen, setIsOpen] = useState(false);\r\n\r\n  return (\r\n    <motion.div\r\n      initial={animated ? { opacity: 0, y: 10 } : false}\r\n      animate={animated ? { opacity: 1, y: 0 } : false}\r\n      transition={\r\n        animated\r\n          ? {\r\n              duration: 0.3,\r\n              delay: index * delay,\r\n              ease: \"easeOut\",\r\n            }\r\n          : undefined\r\n      }\r\n      className={cn(\r\n        \"group rounded-lg border border-border \",\r\n        \"transition-colors duration-200 ease-in-out\",\r\n        isOpen ? \"bg-card/30 shadow-sm\" : \"hover:bg-card/50\"\r\n      )}\r\n    >\r\n      <button\r\n        type=\"button\"\r\n        onClick={() => setIsOpen(!isOpen)}\r\n        className=\"flex w-full items-center justify-between gap-4 px-6 py-4 \"\r\n      >\r\n        <h3\r\n          className={cn(\r\n            \"text-left text-base font-medium transition-colors duration-200 \",\r\n            \"text-foreground/80\",\r\n            isOpen && \"text-foreground\"\r\n          )}\r\n        >\r\n          {question}\r\n        </h3>\r\n        <motion.div\r\n          animate={{\r\n            rotate: isOpen ? 180 : 0,\r\n            scale: isOpen ? 1.1 : 1,\r\n          }}\r\n          transition={{ duration: 0.3, ease: \"easeInOut\" }}\r\n          className={cn(\r\n            \"shrink-0 rounded-full p-0.5 \",\r\n            \"transition-colors duration-200\",\r\n            isOpen ? \"text-primary\" : \"text-muted-foreground\"\r\n          )}\r\n        >\r\n          <ChevronDown className=\"h-4 w-4\" />\r\n        </motion.div>\r\n      </button>\r\n\r\n      <AnimatePresence initial={false}>\r\n        {isOpen && (\r\n          <motion.div\r\n            initial={{ height: 0, opacity: 0 }}\r\n            animate={{\r\n              height: \"auto\",\r\n              opacity: 1,\r\n              transition: {\r\n                height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },\r\n                opacity: { duration: 0.25, delay: 0.1 },\r\n              },\r\n            }}\r\n            exit={{\r\n              height: 0,\r\n              opacity: 0,\r\n              transition: {\r\n                height: { duration: 0.3, ease: \"easeInOut\" },\r\n                opacity: { duration: 0.25 },\r\n              },\r\n            }}\r\n            className=\"\"\r\n          >\r\n            <div className=\"border-t border-border/40 px-6 pb-4 pt-2\">\r\n              <motion.p\r\n                initial={{ y: -8, opacity: 0 }}\r\n                animate={{ y: 0, opacity: 1 }}\r\n                exit={{ y: -8, opacity: 0 }}\r\n                transition={{ duration: 0.3, ease: \"easeOut\" }}\r\n                className=\"text-sm leading-relaxed text-muted-foreground\"\r\n              >\r\n                {answer}\r\n              </motion.p>\r\n            </div>\r\n          </motion.div>\r\n        )}\r\n      </AnimatePresence>\r\n    </motion.div>\r\n  );\r\n}\r\n"],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry//zedUI/FAQ.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -25,9 +39,23 @@ export const Index: Record<string, any> = {
     description: "A demo showcasing a dot background component.",
     type: "registry:component",
     registryDependencies: undefined,
-    content: ["import React from \"react\";\r\nimport DotBackground from \"../zedUI/dot-background\";\r\n\r\nconst DotBackgroundDemo = () => {\r\n  return (\r\n    <div className=\"relative h-[50vh] w-full\"> {/* Parent */ }\r\n      <DotBackground />\r\n      <div className=\" flex items-center justify-center w-full h-full z-10 relative\">\r\n        {/* Children or section */}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DotBackgroundDemo;\r\n"],
+    content: ["import React from \"react\";\r\nimport DotBackground from \"@/registry/zedUI/dot-background\";\r\n\r\nconst DotBackgroundDemo = () => {\r\n  return (\r\n    <div className=\"relative h-[50vh] w-full\"> {/* Parent */ }\r\n      <DotBackground />\r\n      <div className=\" flex items-center justify-center w-full h-full z-10 relative\">\r\n        {/* Children or section */}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DotBackgroundDemo;\r\n"],
     component: React.lazy(async () => {
       const mod = await import("@/registry//demo/dot-background-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "faq-demo": {
+    name: "faq-demo",
+    description: "A demo showcasing a FAQ component.",
+    type: "registry:component",
+    registryDependencies: undefined,
+    content: ["import { FAQList } from \"@/registry/zedUI/FAQ\";\r\n\r\nconst faqs = [\r\n  {\r\n    question: \"What makes Zed UI unique?\",\r\n    answer:\r\n      \"Zed UI stands out through its minimal design, powerful component library, and seamless integration options.\",\r\n  },\r\n  {\r\n    question: \"Do the components work with dark mode?\",\r\n    answer:\r\n      \"Yes, all components are designed to work seamlessly with both light and dark modes.Yes, all components are designed to work seamlessly with both light and dark modes.Yes, all components are designed to work seamlessly with both light and dark modes.\",\r\n  },\r\n  {\r\n    question: \"How can I contribute to Zed UI?\",\r\n    answer:\r\n      \"You can contribute by submitting issues, pull requests, or suggestions on our GitHub repository.\",\r\n  },\r\n  {\r\n    question: \"Is Zed UI compatible with React?\",\r\n    answer:\r\n      \"Yes, Zed UI components are built with React and are fully compatible with React applications.\",\r\n  },\r\n  {\r\n    question: \"Where can I find the documentation for Zed UI?\",\r\n    answer:\r\n      \"Documentation is available on our official website, providing detailed guides and examples for each component.\",\r\n  },\r\n];\r\n\r\nexport default function FaqDemo() {\r\n  return (\r\n    <section className=\"flex justify-center items-center flex-col w-full py-20 px-10 \">\r\n      <h2 className=\"text-2xl font-bold text-center mb-6\">\r\n        Frequently Asked Questions\r\n      </h2>\r\n      <FAQList items={faqs} />\r\n    </section>\r\n  );\r\n}\r\n"],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry//demo/FAQ-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

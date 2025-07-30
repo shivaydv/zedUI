@@ -1,0 +1,17 @@
+{
+  "name": "faq-demo",
+  "type": "registry:component",
+  "title": "FAQ Demo",
+  "description": "A demo showcasing a FAQ component.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { FAQList } from \"@/registry/zedUI/FAQ\";\r\n\r\nconst faqs = [\r\n  {\r\n    question: \"What makes Zed UI unique?\",\r\n    answer:\r\n      \"Zed UI stands out through its minimal design, powerful component library, and seamless integration options.\",\r\n  },\r\n  {\r\n    question: \"Do the components work with dark mode?\",\r\n    answer:\r\n      \"Yes, all components are designed to work seamlessly with both light and dark modes.Yes, all components are designed to work seamlessly with both light and dark modes.Yes, all components are designed to work seamlessly with both light and dark modes.\",\r\n  },\r\n  {\r\n    question: \"How can I contribute to Zed UI?\",\r\n    answer:\r\n      \"You can contribute by submitting issues, pull requests, or suggestions on our GitHub repository.\",\r\n  },\r\n  {\r\n    question: \"Is Zed UI compatible with React?\",\r\n    answer:\r\n      \"Yes, Zed UI components are built with React and are fully compatible with React applications.\",\r\n  },\r\n  {\r\n    question: \"Where can I find the documentation for Zed UI?\",\r\n    answer:\r\n      \"Documentation is available on our official website, providing detailed guides and examples for each component.\",\r\n  },\r\n];\r\n\r\nexport default function FaqDemo() {\r\n  return (\r\n    <section className=\"flex justify-center items-center flex-col w-full py-20 px-10 \">\r\n      <h2 className=\"text-2xl font-bold text-center mb-6\">\r\n        Frequently Asked Questions\r\n      </h2>\r\n      <FAQList items={faqs} />\r\n    </section>\r\n  );\r\n}\r\n",
+      "path": "/demo/FAQ-demo.tsx",
+      "target": "components/FAQ-demo.tsx"
+    }
+  ]
+}

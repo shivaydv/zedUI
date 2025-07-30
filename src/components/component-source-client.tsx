@@ -28,7 +28,7 @@ export function ComponentSourceClient({
           )
         }
         style={{
-          backgroundColor: "transparent",
+          backgroundColor: "#0a0a0a",
         }}
       >
         <Pre>{props.children}</Pre>
@@ -41,7 +41,7 @@ export function ComponentSourceClient({
       lang={lang}
       code={code}
       options={{
-        theme: "github-dark",
+        theme: "github-dark-default",
         components: { pre },
       }}
     />

@@ -44,7 +44,7 @@ export function ComponentPreview({
   return (
     <Tabs
       defaultValue={display === "both" ? "preview" : display}
-      className="w-full"
+      className="w-full not-prose"
     >
       {display === "both" && (
         <TabsList>

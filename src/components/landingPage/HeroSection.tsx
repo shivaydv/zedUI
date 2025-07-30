@@ -60,15 +60,15 @@ export default function HeroSection() {
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <Link
-              href="/docs/components"
-              className="inline-flex w-full md:max-w-sm items-center justify-center border border-fd-primary px-6 py-3 text-sm font-semibold text-fd-primary-foreground bg-fd-primary h-10 md:h-12 md:w-fit rounded-full hover:bg-fd-background hover:text-fd-primary transition-all ease-in-out focus:outline-none "
+              href="/docs"
+              className="inline-flex font-sans w-full md:max-w-sm items-center justify-center border border-fd-primary px-6 py-3 text-sm font-semibold text-fd-primary-foreground bg-fd-primary h-10 md:h-12 md:w-fit rounded-full hover:bg-fd-background hover:text-fd-primary transition-all ease-in-out focus:outline-none "
             >
-              Browse Components
+              Get Started - It&apos;s Free!
               <ArrowUpRight className="ml-2 text-xl" />
             </Link>
             <Link
               href="https://github.com/shivaydv/ZedUI"
-              className="inline-flex w-full md:max-w-sm items-center justify-center px-6 py-3 text-sm font-semibold text-fd-foreground bg-fd-background border border-fd-foreground h-10 md:h-12 md:w-fit rounded-full hover:bg-fd-foreground hover:text-fd-background  transition-all focus:outline-none ease-in-out "
+              className="inline-flex font-sans w-full md:max-w-sm items-center justify-center px-6 py-3 text-sm font-semibold text-fd-foreground bg-fd-background border border-fd-foreground h-10 md:h-12 md:w-fit rounded-full hover:bg-fd-foreground hover:text-fd-background  transition-all focus:outline-none ease-in-out "
             >
               Star on Github
               <FaGithub className="ml-2 text-xl" />

@@ -1,0 +1,71 @@
+---
+title: FAQ Section
+---
+
+<ComponentPreview name="faq-demo" display="both" reload />
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']} defaultIndex={0}>
+  <Tab value="CLI">
+    ```package-install
+    npx shadcn@latest add https://zedui.vercel.app/r/faq.json
+    ```
+  </Tab>
+  <Tab value="Manual">
+    Copy and paste the following code into your project.
+    <ComponentPreview name="faq" display="code" reload title="components/FAQ.tsx" />
+  </Tab>
+</Tabs>
+
+## Usage
+
+```tsx
+import { FAQ } from '@/components/FAQ';
+```
+```tsx
+const faqItems = [
+  {
+    question: '...',
+    answer: '...',
+  },
+  // Add more FAQ items as needed
+];
+```
+
+```tsx
+<FAQ
+  items={faqItems}
+  stagger={true}
+  delay={0.15}
+  animated={true}
+/>
+```
+
+
+## Props
+
+<TypeTable
+  type={{
+    items: {
+      description: 'An array of FAQ items with question and answer.',
+      type: '{ question: string; answer: string; }[]',
+    },
+    stagger: {
+      description: 'Whether to stagger the animation of each item.',
+      type: 'boolean',
+      default: 'true',
+    },
+    delay: {
+      description: 'Time (in seconds) between staggered animations.',
+      type: 'number',
+      default: '0.15',
+    },
+    animated: {
+      description: 'Enable/disable entrance animation for items.',
+      type: 'boolean',
+      default: 'true',
+    },
+  }}
+/>
+

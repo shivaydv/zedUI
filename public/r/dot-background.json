@@ -2,7 +2,7 @@
   "name": "dot-background",
   "type": "registry:component",
   "title": "Dot Background",
-  "description": "A demo showcasing a dot background component.",
+  "description": "A dot background component.",
   "files": [
     {
       "type": "registry:component",

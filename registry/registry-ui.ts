@@ -4,7 +4,7 @@ export const ZedUI: Registry["items"] = [
   {
     name: "dot-background",
     title: "Dot Background",
-    description: "A demo showcasing a dot background component.",
+    description: "A dot background component.",
     type: "registry:component",
     files: [
       {
@@ -13,6 +13,19 @@ export const ZedUI: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    
   },
+  {
+    name: "faq",
+    title: "FAQ",
+    description: "A FAQ component.",
+    type: "registry:component",
+    files: [
+      {
+        path: "/zedUI/FAQ.tsx",
+        type: "registry:component",
+        target: "components/FAQ.tsx",
+      }
+    ],
+    dependencies: ["motion"]
+  }
 ];
