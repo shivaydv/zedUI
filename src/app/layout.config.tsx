@@ -14,7 +14,7 @@ import Logo from "@/src/components/layout/Logo";
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: <Logo />,
-    transparentMode: "always",
+    transparentMode: "top",
   },
   githubUrl: "https://github.com/shivaydv/ZedUI",
   searchToggle: { enabled: true },

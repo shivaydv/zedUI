@@ -1,7 +1,13 @@
 import "./global.css";
 import { RootProvider } from "fumadocs-ui/provider";
-import { Poppins } from "next/font/google";
+import { Open_Sans, Poppins } from "next/font/google";
 import type { ReactNode } from "react";
+
+const OpenSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.className}`} suppressHydrationWarning>
+    <html lang="en" className={`${OpenSans.className} ${poppins.variable}`} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <RootProvider theme={{ defaultTheme: "dark" }}>{children}</RootProvider>
       </body>
