@@ -1,18 +1,16 @@
 import "./global.css";
 import { RootProvider } from "fumadocs-ui/provider";
-import { Open_Sans, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Open_Sans, Poppins } from "next/font/google";
 import type { ReactNode } from "react";
 
-const OpenSans = Open_Sans({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
 });
 
-const poppins = Poppins({
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
 });
 
 import { Metadata } from "next";
@@ -33,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${OpenSans.className} ${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <RootProvider theme={{ defaultTheme: "dark" }}>{children}</RootProvider>
       </body>

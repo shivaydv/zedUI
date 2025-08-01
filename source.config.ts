@@ -9,6 +9,36 @@ import { remarkInstall } from 'fumadocs-docgen';
 import { rehypeCodeDefaultOptions } from 'fumadocs-core/mdx-plugins';
 import { z } from "zod";
 
+// Custom rehype plugin to remove [!code highlight] comments
+function rehypeRemoveHighlightComments() {
+  return (tree: any) => {
+    function processNode(node: any) {
+      if (node.type === 'text') {
+        // Remove [!code highlight] comments from text nodes
+        node.value = node.value
+          .replace(/\/\/ \[!code highlight\]/g, '')
+          .replace(/\/\* \[!code highlight\]\*\//g, '')
+          .replace(/\/\/ \[!code highlight\]/g, '')
+          .replace(/\/\* \[!code highlight\]\*\//g, '');
+      } else if (node.children) {
+        // Process child nodes
+        node.children = node.children.filter((child: any) => {
+          if (child.type === 'text' && child.value.trim() === '// [!code highlight]') {
+            return false; // Remove standalone comment nodes
+          }
+          if (child.type === 'text' && child.value.trim() === '/* [!code highlight]*/') {
+            return false; // Remove standalone comment nodes
+          }
+          processNode(child);
+          return true;
+        });
+      }
+    }
+    
+    processNode(tree);
+    return tree;
+  };
+}
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.vercel.app/docs/mdx/collections#define-docs
@@ -35,30 +65,7 @@ export default defineConfig({
     },
     rehypeCodeOptions: {
       ...rehypeCodeDefaultOptions,
-      transformers: [
-        ...(rehypeCodeDefaultOptions.transformers ?? []),
-        {
-          name: '@shikijs/transformers:remove-notation-escape',
-          code(hast) {
-            function replace(node: any): void {
-              if (node.type === 'text') {
-                // Handle both escaped and unescaped versions
-                node.value = node.value
-                  .replace(/\\\[\\!code/g, '[!code')
-                  .replace(/\[\\!code/g, '[!code');
-              } else if ('children' in node) {
-                for (const child of node.children) {
-                  replace(child);
-                }
-              }
-            }
-
-            replace(hast);
-            return hast;
-          },
-        },
-      ],
-      
     },
+    rehypePlugins: [rehypeRemoveHighlightComments],
   },
 });

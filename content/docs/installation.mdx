@@ -4,6 +4,50 @@ description: How to install and set up Zed UI in your project.
 icon: Package
 ---
 
-import UnderDevelopment from '@components/layout/UnderDevelopment';
 
-<UnderDevelopment className="mt-30" />
+<Callout>
+
+**Note:** We have the exact same installation process as [shadcn/ui](https://ui.shadcn.com/docs/installation/).
+
+</Callout>
+
+<Steps>
+<Step>
+### Create project
+
+Run the `init` command to create a new Next.js project or to setup an existing one:
+
+```package-install
+npx shadcn@latest init
+```
+
+Choose between a Next.js project or a Monorepo.
+</Step>
+
+<Step>
+### Add Components
+
+You can now start adding components to your project.
+
+```package-install
+npx shadcn@latest add "https://zedui.vercel.app/r/dot-background.json"
+```
+    </Step>
+
+<Step>
+### Import Components
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx title="app/page.tsx" lineNumbers
+import { DotBackground } from "@/components/dot-background" // [!code highlight]
+export default function Home() {
+    return (
+      <div>
+        <DotBackground /> {/* [!code highlight]*/}
+      </div>
+  )
+}
+```
+      </Step>
+
+</Steps>
