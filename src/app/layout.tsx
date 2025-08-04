@@ -1,6 +1,6 @@
 import "./global.css";
 import { RootProvider } from "fumadocs-ui/provider";
-import { Geist, Geist_Mono, Inter, Open_Sans, Poppins } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
 const geistSans = Geist({
@@ -14,10 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 import { Metadata } from "next";
+import Analytics from "../analytics/analytics";
 
 export const metadata: Metadata = {
   title: "Zed UI",
-  description: "Build stunning websites with ease. A modern UI library for Design Engineers — ship faster with customizable UI components.",
+  description:
+    "Build stunning websites with ease. A modern UI library for Design Engineers — ship faster with customizable UI components.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -31,9 +33,14 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <RootProvider theme={{ defaultTheme: "dark" }}>{children}</RootProvider>
+        <Analytics />
       </body>
     </html>
   );
