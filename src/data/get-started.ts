@@ -1,10 +1,10 @@
 export const GET_STARTED = [
   {
     name: "Installation",
-    slug: "/ui/installation",
+    slug: "/docs/installation",
   },
   {
     name: "CLI",
-    slug: "/ui/cli",
+    slug: "/docs/cli",
   },
 ];

@@ -6,7 +6,7 @@ import "@/styles/globals.css";
 import { cn } from "@/utils/cn";
 
 import { ThemeProvider } from "./theme-provider";
-import { Header } from "./ui/_components/Header";
+import { Header } from "@/components/site/navigation/Header";
 
 export const metadata: Metadata = {
   authors: [{ name: "Zed UI Team", url: "https://zed-ui.com" }],

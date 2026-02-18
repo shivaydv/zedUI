@@ -36,8 +36,7 @@ export function getDocs(directory?: string): Docs[] {
   const files = getFiles(
     path.join(
       process.cwd(),
-      "src/app",
-      "_docs",
+      "src/content",
       ...(directory ? [directory] : []),
     ),
   );
@@ -47,8 +46,7 @@ export function getDocs(directory?: string): Docs[] {
       readFile(
         path.join(
           process.cwd(),
-          "src/app",
-          "_docs",
+          "src/content",
           ...(directory ? [directory] : []),
           file,
         ),

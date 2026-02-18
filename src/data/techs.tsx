@@ -1,4 +1,4 @@
-import { Icons } from '@/app/_components/Icons'
+import { Icons } from '@/components/shared/Icons'
 
 export const TECHS = [
   {
@@ -18,3 +18,4 @@ export const TECHS = [
     name: 'Radix UI',
   },
 ]
+
