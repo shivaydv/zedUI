@@ -8,7 +8,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-} from "@/registry/dialog";
+} from "@/components/ui/dialog";
 
 export const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
