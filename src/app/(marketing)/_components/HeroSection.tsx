@@ -50,7 +50,7 @@ export function HeroSection() {
           >
             <div className="space-y-4">
               <p className="border-l border-border pl-6">
-               Animated, production-ready UI blocks for modern product interfaces.
+                Animated, production-ready UI blocks for modern product interfaces.
               </p>
               <div className="size-2 bg-foreground/10 rounded-full animate-pulse ml-6" />
             </div>
@@ -61,38 +61,37 @@ export function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div
             style={{ y: y1 }}
-            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl"
+            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl group"
           >
             <Image
-              src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2670&auto=format&fit=crop"
+              src="/dummy-images/hero1.avif"
               alt="Abstract Moody 1"
               fill
-              className="object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+              className="object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
             />
           </motion.div>
 
           <motion.div
             style={{ y: y3 }}
-            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl shadow-2xl"
+            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl shadow-2xl group"
           >
             <Image
-              src="https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=2574&auto=format&fit=crop"
+              src="/dummy-images/hero2.avif"
               alt="Abstract Moody 2"
               fill
-              className="object-cover grayscale brightness-50 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+              className="object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent" />
           </motion.div>
 
           <motion.div
             style={{ y: y2 }}
-            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl"
+            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl group"
           >
             <Image
-              src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2574&auto=format&fit=crop"
+              src="/dummy-images/hero3.avif"
               alt="Abstract Moody 3"
               fill
-              className="object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+              className="object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
             />
           </motion.div>
         </div>

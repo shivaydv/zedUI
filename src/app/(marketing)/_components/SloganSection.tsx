@@ -9,20 +9,20 @@ import { cn } from "@/utils/cn";
 
 const PREVIEW_CARDS = [
   {
-    image: "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=2670&auto=format&fit=crop",
-    rotate: -12,
+    image: "/dummy-images/cta1.avif",
+    rotate: -18,
     x: "-25%",
     duration: 5,
   },
   {
-    image: "https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=2574&auto=format&fit=crop",
+    image: "/dummy-images/cta3.avif",
     rotate: 0,
     x: "0%",
     duration: 7,
   },
   {
-    image: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=2670&auto=format&fit=crop",
-    rotate: 12,
+    image: "/dummy-images/cta1.avif",
+    rotate: 18,
     x: "25%",
     duration: 6,
   },
@@ -57,7 +57,7 @@ export function SloganSection() {
             <motion.div
               key={idx}
               className={cn(
-                "absolute size-32 sm:size-40 rounded-2xl border border-white/10 bg-background shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] overflow-hidden",
+                "absolute size-32 sm:size-40 rounded-2xl border border-white/10 bg-background shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] overflow-hidden group",
                 idx === 1 ? "z-20" : "z-10"
               )}
               initial={{ opacity: 0, scale: 0.9, rotate: card.rotate, x: card.x }}
@@ -90,9 +90,8 @@ export function SloganSection() {
                 src={card.image}
                 alt="Digital Interface Preview"
                 fill
-                className="object-cover grayscale brightness-90 hover:grayscale-0 hover:scale-110 transition-all duration-1000"
+                className="object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
               />
-              <div className="absolute inset-0 bg-linear-to-b from-transparent via-background/10 to-background/60" />
             </motion.div>
           ))}
         </motion.div>

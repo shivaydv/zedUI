@@ -9,25 +9,25 @@ const BENTO_ITEMS = [
   {
     title: "Core Infrastructure",
     description: "Built on high-performance primitives for seamless integration.",
-    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2574&auto=format&fit=crop",
+    image: "/dummy-images/bento1.avif",
     colSpan: "md:col-span-2",
   },
   {
     title: "Visual Fidelity",
     description: "Extreme attention to detail in every pixel.",
-    image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2670&auto=format&fit=crop",
+    image: "/dummy-images/bento2.avif",
     colSpan: "md:col-span-1",
   },
   {
     title: "Motion Design",
     description: "Physics-based animations that feel natural and responsive.",
-    image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2670&auto=format&fit=crop",
+    image: "/dummy-images/bento3.avif",
     colSpan: "md:col-span-1",
   },
   {
     title: "Accessibility",
     description: "Engineered to be inclusive and standards-compliant by default.",
-    image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop",
+    image: "/dummy-images/bento4.avif",
     colSpan: "md:col-span-2",
   },
 ];

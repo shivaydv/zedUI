@@ -1,8 +1,9 @@
-import { ComponentsSection } from "./_components/components-section";
-import { HeroSection } from "./_components/hero-section";
-import { TrustedSection } from "./_components/trusted-section";
 import { Footer } from "@/components/shared/Footer";
-import { SloganSection } from "./_components/slogan-section";
+import { ComponentsSection } from "./_components/ComponentsSection";
+import { HeroSection } from "./_components/HeroSection";
+import { SloganSection } from "./_components/SloganSection";
+import { TrustedSection } from "./_components/TrustedSection";
+
 
 export default function Home() {
   return (
