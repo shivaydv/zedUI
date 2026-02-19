@@ -1,60 +1,102 @@
-import Link from "next/link";
+"use client";
 
-import { ChevronRightIcon } from "lucide-react";
-
-import { AnimateEnter } from "@/components/shared/AnimateEnter";
-import { ComponentsExample } from "./ComponentsExample";
-
+import { motion } from "motion/react";
+import Image from "next/image";
 import { cn } from "@/utils/cn";
+import { Button } from "@/registry/button";
+
+const BENTO_ITEMS = [
+  {
+    title: "Core Infrastructure",
+    description: "Built on high-performance primitives for seamless integration.",
+    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2574&auto=format&fit=crop",
+    colSpan: "md:col-span-2",
+  },
+  {
+    title: "Visual Fidelity",
+    description: "Extreme attention to detail in every pixel.",
+    image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2670&auto=format&fit=crop",
+    colSpan: "md:col-span-1",
+  },
+  {
+    title: "Motion Design",
+    description: "Physics-based animations that feel natural and responsive.",
+    image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2670&auto=format&fit=crop",
+    colSpan: "md:col-span-1",
+  },
+  {
+    title: "Accessibility",
+    description: "Engineered to be inclusive and standards-compliant by default.",
+    image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop",
+    colSpan: "md:col-span-2",
+  },
+];
+
+const PREVIEW_COMPONENTS = [
+  { component: <Button variant="shine">Shine</Button> },
+  { component: <Button variant="animated-border">Pulse</Button> },
+  { component: <Button variant="rotate-border">Flux</Button> },
+  { component: <Button variant="glitch-brightness">Glitch</Button> },
+  { component: <Button variant="outline">Minimal</Button> },
+  { component: <Button variant="destructive">Critical</Button> },
+  { component: <Button variant="outline">Ghost</Button> },
+  { component: <Button variant="default">Secondary</Button> },
+];
 
 export function ComponentsSection() {
   return (
-    <section className="mt-14 flex flex-col items-center justify-center gap-12 sm:gap-16">
-      <AnimateEnter className="space-y-4 text-center">
-        <div className="space-y-2">
-          <Link
-            href="/docs/button"
-            className="group w-fit mx-auto flex items-center justify-center gap-1.5 text-[15px] font-semibold text-gradient duration-300"
+    <section className="flex flex-col gap-32">
+      {/* Bento Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {BENTO_ITEMS.map((item, idx) => (
+          <div
+            key={idx}
+            className={cn(
+              "relative group overflow-hidden bg-muted/5 border border-border min-h-[300px] rounded-xl p-8 flex flex-col justify-end",
+              item.colSpan
+            )}
           >
-            <span>See more</span>
-            <ChevronIconGlitch className="text-gradient" />
-          </Link>
-          <h1 className="text-gradient mx-auto text-5xl font-medium leading-none tracking-tight">
-            Refined user <br className="md:hidden" /> interfaces
-          </h1>
-        </div>
-        <p className="mx-auto max-sm:px-8 text-base md:text-lg max-w-lg text-foreground">
-          Choose a component, copy the code, and instantly elevate your
-          interface. With just a few clicks, watch your app shine.
-        </p>
-      </AnimateEnter>
-      <ComponentsExample />
-    </section>
-  );
-}
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover grayscale opacity-10 group-hover:opacity-20 transition-opacity duration-700"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent" />
+            </div>
 
-function ChevronIconGlitch({ className }: { className?: string }) {
-  return (
-    <div className="relative overflow-hidden font-medium">
-      <span className="invisible">
-        <ChevronRightIcon size={14} />
-      </span>
-      <span
-        className={cn(
-          "absolute left-0 top-0 text-white transition-transform duration-300 ease-in-out hover:duration-150 group-hover:translate-x-full dark:text-black",
-          className
-        )}
-      >
-        <ChevronRightIcon size={14} />
-      </span>
-      <span
-        className={cn(
-          "absolute left-0 top-0 -translate-x-full text-white transition-transform duration-300 ease-in-out hover:duration-150 group-hover:translate-x-0 dark:text-black",
-          className
-        )}
-      >
-        <ChevronRightIcon size={14} />
-      </span>
-    </div>
+            <div className="relative z-10 space-y-1">
+              <h3 className="text-lg font-medium tracking-tight text-foreground">
+                {item.title}
+              </h3>
+              <p className="text-xs text-muted-foreground max-w-sm leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Extreme Minimal Showcases - Reduced size */}
+      <div className="space-y-10">
+        <h2 className="text-xl font-medium text-foreground uppercase tracking-widest text-[13px] opacity-40">
+          Components Library
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {PREVIEW_COMPONENTS.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-muted/3 border border-border aspect-square flex items-center justify-center rounded-xl transition-all duration-300 hover:border-foreground/20 hover:bg-muted/5 group"
+            >
+              <div className="scale-100 transition-transform duration-500 group-hover:scale-110">
+                {item.component}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

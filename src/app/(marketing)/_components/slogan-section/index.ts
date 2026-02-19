@@ -1,1 +1,1 @@
-export * from './SloganSection'
+export { SloganSection } from "./SloganSection";

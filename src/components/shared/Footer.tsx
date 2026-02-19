@@ -26,16 +26,21 @@ export function Footer() {
 
   return (
     <footer className="relative z-10">
-      <div className="relative mx-auto w-full max-w-7xl px-8 pb-5">
+      {/* Top divider */}
+      <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-800 to-transparent" />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-[1200px] px-5 sm:px-8 pb-5 pt-6">
         <div className="flex gap-10 max-md:flex-col items-center md:justify-between">
           <AnimateEnter className="flex flex-col gap-1 max-md:order-2">
-            <p className="text-[13px] text-foreground">
+            <p className="text-[13px] text-neutral-500 dark:text-neutral-400">
               &#169; {getFullYear()},{" "}
               <a
                 href="https://guhrodrigues.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="duration-200 hover:text-primary outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
+                className="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
               >
                 Zed UI Team.
               </a>
@@ -47,7 +52,7 @@ export function Footer() {
                 <Link
                   key={idx}
                   href={slug}
-                  className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-foreground duration-200 hover:text-primary outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
+                  className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-neutral-500 dark:text-neutral-400 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
                 >
                   {name}
                 </Link>
@@ -64,7 +69,7 @@ export function Footer() {
                 href="https://github.com/shivaydv/ZedUI"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-foreground duration-200 hover:text-primary outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
+                className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-neutral-500 dark:text-neutral-400 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
               >
                 GitHub
                 <ArrowIconGlitch />
@@ -73,7 +78,7 @@ export function Footer() {
                 href="https://x.com/shivay1256"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-foreground duration-200 hover:text-primary outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
+                className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-neutral-500 dark:text-neutral-400 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
               >
                 X (Twitter)
                 <ArrowIconGlitch />
@@ -92,10 +97,10 @@ function ArrowIconGlitch() {
       <span className="invisible">
         <ArrowUpRightIcon size={10} />
       </span>
-      <span className="absolute left-0 top-0 text-neutral-500 dark:text-neutral-400 transition-transform duration-300 ease-in-out hover:duration-300 group-hover:-translate-y-full group-hover:translate-x-full">
+      <span className="absolute left-0 top-0 text-neutral-400 dark:text-neutral-500 transition-transform duration-300 ease-in-out hover:duration-300 group-hover:-translate-y-full group-hover:translate-x-full">
         <ArrowUpRightIcon size={10} />
       </span>
-      <span className="absolute left-0 top-0 -translate-x-full translate-y-full text-primary transition-transform duration-300 ease-in-out hover:duration-300 group-hover:translate-x-0 group-hover:translate-y-0">
+      <span className="absolute left-0 top-0 -translate-x-full translate-y-full text-neutral-900 dark:text-neutral-100 transition-transform duration-300 ease-in-out hover:duration-300 group-hover:translate-x-0 group-hover:translate-y-0">
         <ArrowUpRightIcon size={10} />
       </span>
     </div>
@@ -103,7 +108,10 @@ function ArrowIconGlitch() {
 }
 
 function Divider() {
-  return <div aria-hidden className="h-[21px] w-px bg-border" />;
+  return (
+    <div
+      aria-hidden
+      className="h-[21px] w-px bg-neutral-300 dark:bg-neutral-800"
+    />
+  );
 }
-
-

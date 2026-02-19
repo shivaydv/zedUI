@@ -1,41 +1,46 @@
-import { AnimateEnter } from "@/components/shared/AnimateEnter";
-import { FeedbacksCard } from "./FeedbacksCard";
+"use client";
+
+import Image from "next/image";
+import { motion } from "motion/react";
+import { cn } from "@/utils/cn";
 
 export function FeedbacksSection() {
   return (
-    <section className="relative z-[4] mt-48 sm:mt-60 bg-background">
-      <div className="relative overflow-hidden rounded-t-3xl border-t border-border pt-16 sm:[mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]">
-        <Line />
-        <Blur />
-        <AnimateEnter
-          className="flex flex-col items-center justify-center gap-14"
-          delay={0.2}
+    <section className="relative w-full py-24">
+      <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-12">
+        <div className="size-12 rounded-full bg-muted/20 flex items-center justify-center">
+          <span className="text-[10px] font-mono text-muted-foreground">05</span>
+        </div>
+
+        <motion.p
+          className="text-2xl sm:text-3xl font-light leading-relaxed text-foreground italic"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          <FeedbacksCard />
-        </AnimateEnter>
+          "Zed UI is an ultra-aesthetic interface library. Promising when built as
+          an abstract layer on top of your existing design system."
+        </motion.p>
+
+        <div className="flex flex-col items-center gap-4">
+          <Image
+            src="https://github.com/guilhermerodz.png"
+            alt="Guilherme Rodz"
+            width={56}
+            height={56}
+            className="grayscale rounded-full border border-border"
+          />
+          <div className="flex flex-col">
+            <span className="text-[14px] font-medium text-foreground uppercase tracking-widest">
+              Guilherme Rodz
+            </span>
+            <span className="text-[11px] text-muted-foreground uppercase tracking-widest">
+              Creator of Input-OTP
+            </span>
+          </div>
+        </div>
       </div>
     </section>
-  );
-}
-
-function Blur() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute -top-1 left-1/2 h-[200px] w-full max-w-[200px] -translate-x-1/2 -translate-y-1/2 md:max-w-[400px]"
-      style={{
-        background:
-          "conic-gradient(from 90deg at 50% 50%, #00000000 50%, #0a0a0a 50%),radial-gradient(rgba(134, 134, 134, 0.1) 0%, transparent 80%)",
-      }}
-    />
-  );
-}
-
-function Line() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute left-1/2 top-0 h-px w-1/2 max-w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-l from-transparent via-white/50 via-50% to-transparent"
-    />
   );
 }
