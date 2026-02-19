@@ -5,7 +5,7 @@ import path from "path";
 
 import matter from "gray-matter";
 
-function readFile(filePath: string): Docs | null {
+function readFile(filePath: string, includeContent: boolean = true): Docs | null {
   try {
     const rawContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(rawContent);
@@ -15,7 +15,7 @@ function readFile(filePath: string): Docs | null {
     return {
       ...data,
       slug,
-      content,
+      ...(includeContent ? { content } : {}),
     } as Docs;
   } catch (error) {
     console.error(`Failed to read or parse the file at ${filePath}:`, error);
@@ -50,6 +50,30 @@ export function getDocs(directory?: string): Docs[] {
           ...(directory ? [directory] : []),
           file,
         ),
+      ),
+    )
+    .filter((docs): docs is Docs => docs !== null);
+}
+
+export function getDocsMetadata(directory?: string): Omit<Docs, 'content'>[] {
+  const files = getFiles(
+    path.join(
+      process.cwd(),
+      "src/content",
+      ...(directory ? [directory] : []),
+    ),
+  );
+
+  return files
+    .map((file) =>
+      readFile(
+        path.join(
+          process.cwd(),
+          "src/content",
+          ...(directory ? [directory] : []),
+          file,
+        ),
+        false
       ),
     )
     .filter((docs): docs is Docs => docs !== null);

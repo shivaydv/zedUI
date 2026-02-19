@@ -1,9 +1,9 @@
 "use server";
 
-import { getDocs } from "./mdx";
+import { getDocsMetadata } from "./mdx";
 
 export async function getAllComponents() {
-    const components = getDocs().sort((a, b) =>
+    const components = getDocsMetadata().sort((a, b) =>
         a.title.localeCompare(b.title)
     );
 

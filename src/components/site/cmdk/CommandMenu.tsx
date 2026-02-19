@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { useEffect, useState, useRef, useLayoutEffect, useTransition, useMemo } from "react";
 
 import Lottie from "lottie-react";
 
@@ -160,6 +160,8 @@ function CommandMenuItem({
 export function CommandMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const [components, setComponents] = useState<{ title: string; slug: string; isNew: boolean }[]>([]);
+    const [isPending, startTransition] = useTransition();
+    const [error, setError] = useState<string | null>(null);
 
     const router = useRouter();
     const pathname = usePathname();
@@ -173,7 +175,17 @@ export function CommandMenu() {
     const componentRefs = useRef<{ [key: string]: any }>({});
 
     useEffect(() => {
-        getAllComponents().then(setComponents);
+        startTransition(() => {
+            getAllComponents()
+                .then((data) => {
+                    setComponents(data);
+                    setError(null);
+                })
+                .catch((err) => {
+                    console.error("Failed to load components:", err);
+                    setError("Could not load components");
+                });
+        });
     }, []);
 
     function getComponentRef(title: string) {
@@ -184,24 +196,26 @@ export function CommandMenu() {
         return componentRefs.current[title];
     }
 
-    const componentItems = components.map((component) => ({
-        title: component.title,
-        slug: `/docs/${component.slug}`,
-        ref: getComponentRef(component.title),
-        icon: (
-            <Lottie
-                lottieRef={getComponentRef(component.title)}
-                animationData={
-                    theme === "dark" ? fileDarkModeIcon : fileLightModeIcon
-                }
-                style={{ width: 22, height: 22 }}
-                autoplay={false}
-                loop={false}
-            />
-        ),
-    }));
+    const componentItems = useMemo(() => {
+        return components.map((component) => ({
+            title: component.title,
+            slug: `/docs/${component.slug}`,
+            ref: getComponentRef(component.title),
+            icon: (
+                <Lottie
+                    lottieRef={getComponentRef(component.title)}
+                    animationData={
+                        theme === "dark" ? fileDarkModeIcon : fileLightModeIcon
+                    }
+                    style={{ width: 22, height: 22 }}
+                    autoplay={false}
+                    loop={false}
+                />
+            ),
+        }));
+    }, [components, theme]);
 
-    const ITEMS: ItemProps[] = [
+    const ITEMS: ItemProps[] = useMemo(() => [
         {
             heading: "Suggestions",
             group: [
@@ -284,7 +298,7 @@ export function CommandMenu() {
             heading: "Components",
             group: componentItems,
         },
-    ];
+    ], [componentItems, theme]);
 
     const isApp = pathname === "/" || pathname.startsWith("/updates");
     const isHomePage = pathname === "/";
