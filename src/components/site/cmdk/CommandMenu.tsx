@@ -1,3 +1,5 @@
+"use client";
+
 import { usePathname, useRouter } from "next/navigation";
 
 import { useEffect, useState, useRef, useLayoutEffect } from "react";
@@ -35,6 +37,8 @@ import thunderDarkModeIcon from "@/assets/icons/thunder/dark-mode.json";
 import thunderLightModeIcon from "@/assets/icons/thunder/light-mode.json";
 import fileDarkModeIcon from "@/assets/icons/file/dark-mode.json";
 import fileLightModeIcon from "@/assets/icons/file/light-mode.json";
+
+import { getAllComponents } from "@/lib/actions";
 
 type ItemProps = {
     heading: string;
@@ -155,6 +159,7 @@ function CommandMenuItem({
 
 export function CommandMenu() {
     const [isOpen, setIsOpen] = useState(false);
+    const [components, setComponents] = useState<{ title: string; slug: string; isNew: boolean }[]>([]);
 
     const router = useRouter();
     const pathname = usePathname();
@@ -167,6 +172,10 @@ export function CommandMenu() {
     const thunderRef = useRef<any>(null);
     const componentRefs = useRef<{ [key: string]: any }>({});
 
+    useEffect(() => {
+        getAllComponents().then(setComponents);
+    }, []);
+
     function getComponentRef(title: string) {
         if (!componentRefs.current[title]) {
             componentRefs.current[title] = { current: null };
@@ -174,6 +183,23 @@ export function CommandMenu() {
 
         return componentRefs.current[title];
     }
+
+    const componentItems = components.map((component) => ({
+        title: component.title,
+        slug: `/docs/${component.slug}`,
+        ref: getComponentRef(component.title),
+        icon: (
+            <Lottie
+                lottieRef={getComponentRef(component.title)}
+                animationData={
+                    theme === "dark" ? fileDarkModeIcon : fileLightModeIcon
+                }
+                style={{ width: 22, height: 22 }}
+                autoplay={false}
+                loop={false}
+            />
+        ),
+    }));
 
     const ITEMS: ItemProps[] = [
         {
@@ -256,24 +282,7 @@ export function CommandMenu() {
         },
         {
             heading: "Components",
-            group: [
-                {
-                    title: "Button",
-                    slug: "/docs/button",
-                    ref: getComponentRef("Button"),
-                    icon: (
-                        <Lottie
-                            lottieRef={getComponentRef("Button")}
-                            animationData={
-                                theme === "dark" ? fileDarkModeIcon : fileLightModeIcon
-                            }
-                            style={{ width: 22, height: 22 }}
-                            autoplay={false}
-                            loop={false}
-                        />
-                    ),
-                },
-            ],
+            group: componentItems,
         },
     ];
 
@@ -344,7 +353,7 @@ export function CommandMenu() {
             >
                 <div
                     aria-hidden
-                    className="pointer-events-none absolute left-1/2 -top-[0.031em] h-px w-1/2 max-w-[1000px] -translate-x-1/4 -translate-y-1/2 bg-gradient-to-l from-transparent via-white/18 via-30% to-transparent"
+                    className="pointer-events-none absolute left-1/2 -top-[0.031em] h-px w-1/2 max-w-[1000px] -translate-x-1/4 -translate-y-1/2 bg-linear-to-l from-transparent via-white/18 via-30% to-transparent"
                 />
                 <span className="flex items-center gap-2 font-[460] text-neutral-500">
                     <SearchIcon size={12} />

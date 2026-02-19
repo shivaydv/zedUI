@@ -1,7 +1,7 @@
 import { SidebarButton } from "./SidebarButton";
 
 import { GET_STARTED } from "@/data/get-started";
-import { getComponents } from "@/utils/get-components";
+import { getDocs } from "@/lib/mdx";
 
 export function Sidebar() {
   return (
@@ -22,11 +22,11 @@ export function Sidebar() {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="relative z-[1] -ml-0.5 text-sm font-[460] text-foreground">
+          <span className="relative z-1 -ml-0.5 text-sm font-[460] text-foreground">
             Components
           </span>
           <div className="flex flex-col pb-8">
-            {getComponents.map((component) => (
+            {getDocs().map((component) => (
               <SidebarButton
                 key={component.title}
                 name={component.title}

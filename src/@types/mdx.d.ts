@@ -9,6 +9,7 @@ import { Button } from "@/registry/ui/button"
 import { CopyCode } from "@/components/site/docs/CopyCode"
 import { BlurImage } from "@/components/shared/BlurImage"
 import { BentoGrid, BentoCard } from "@/registry/ui/bento-grid"
+import { StackedSections } from "@/registry/ui/stacked-sections"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -34,6 +35,7 @@ declare global {
         Image: typeof Image
         BentoGrid: typeof BentoGrid
         BentoCard: typeof BentoCard
+        StackedSections: typeof StackedSections
         CodeHighlight: React.FC<React.HTMLAttributes<HTMLSpanElement>>
         p: React.FC<React.HTMLAttributes<HTMLParagraphElement>>
         h1: React.FC<React.HTMLAttributes<HTMLHeadingElement>>

@@ -49,4 +49,16 @@ export const registry: Registry = [
             },
         ],
     },
+    {
+        name: "stacked-sections",
+        type: "registry:ui",
+        description: "A scroll-triggered stack of 100vh sections that pin and scale as you scroll.",
+        dependencies: ["motion"],
+        files: [
+            {
+                path: "registry/ui/stacked-sections.tsx",
+                type: "registry:ui",
+            },
+        ],
+    },
 ]

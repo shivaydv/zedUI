@@ -26,6 +26,9 @@ import { Steps, Step } from "@/components/site/docs/Steps";
 import { CopyCode } from "@/components/site/docs/CopyCode";
 import { BlurImage } from "@/components/shared/BlurImage";
 import { BentoGrid, BentoCard } from "@/registry/ui/bento-grid";
+import { StackedSections } from "@/registry/ui/stacked-sections";
+
+
 
 const components: MDXComponents = {
   ComponentView: ({ children, className, ...props }: any) => (
@@ -52,6 +55,7 @@ const components: MDXComponents = {
       {children}
     </h1>
   ),
+  StackedSections: (props: any) => <StackedSections {...props} />,
   h2: ({ children, className, ...props }: any) => (
     <h2
       className={cn("font-semibold text-primary text-xl tracking-tight", className)}

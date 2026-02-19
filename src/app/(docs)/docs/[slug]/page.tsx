@@ -18,6 +18,8 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
+import { constructMetadata } from "@/config/metadata";
+
 export async function generateMetadata({
   params,
 }: {
@@ -31,41 +33,18 @@ export async function generateMetadata({
     return;
   }
 
-  const { title, description, slug: slugDocs } = docs;
+  const { title, description } = docs;
 
-  return {
+  return constructMetadata({
     title,
     description,
-    openGraph: {
-      title: `Zed UI: ${title}`,
-      description,
-      type: "website",
-      url: `https://zedui.vercel.app/docs/${slugDocs}`,
-      images: [
-        {
-          width: 1920,
-          height: 1080,
-          url: "https://zedui.vercel.app/open-graphs/og-website.png",
-          alt: "Zed UI website cover",
-        },
-      ],
-    },
-    twitter: {
-      title: `Zed UI: ${title}`,
-      description,
-      card: "summary_large_image",
-      images: [
-        {
-          width: 1920,
-          height: 1080,
-          url: "https://zedui.vercel.app/open-graphs/og-website.png",
-          alt: "Zed UI website cover",
-        },
-      ],
-    },
-  };
+  });
 }
 
+// Re-evaluating docs for the new stacked-sections component
+import { DocLayout } from "@/components/site/docs/DocLayout";
+
+// Force refresh for variant changes
 export default async function ComponentPage({
   params,
 }: {
@@ -81,77 +60,79 @@ export default async function ComponentPage({
   const previousComponent = Docs[currentComponent - 1];
   const nextComponent = Docs[currentComponent + 1];
 
-  const { title, description, content, externalDocs, externalApi } = docs;
+  const { title, description, content, externalDocs, externalApi, variant } = docs;
 
   return (
-    <main className="my-2">
-      <div className="space-y-20">
-        <div className="space-y-4">
-          <Breadcrumbs groupName="Components" currentPage={title} />
-          <h1 className="text-3xl font-semibold tracking-tight text-primary">
-            {title}
-          </h1>
-          <p className="text-[16px] font-normal leading-relaxed text-black/80 dark:text-white/90">
-            {description}
-          </p>
-          {externalDocs && !externalApi && (
-            <a
-              href={externalDocs}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group w-fit text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
-            >
-              Docs
-              <ArrowIconGlitch />
-            </a>
-          )}
-          {externalApi && !externalDocs && (
-            <a
-              href={externalApi}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group w-fit text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
-            >
-              Component API
-              <ArrowIconGlitch />
-            </a>
-          )}
-          {externalDocs && externalApi && (
-            <div className="flex items-center gap-2">
+    <DocLayout variant={variant}>
+      <main className="my-2">
+        <div className="space-y-20">
+          <div className="space-y-4">
+            <Breadcrumbs groupName="Components" currentPage={title} />
+            <h1 className="text-3xl font-semibold tracking-tight text-primary">
+              {title}
+            </h1>
+            <p className="text-[16px] font-normal leading-relaxed text-black/80 dark:text-white/90">
+              {description}
+            </p>
+            {externalDocs && !externalApi && (
               <a
                 href={externalDocs}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
+                className="group w-fit text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
               >
                 Docs
                 <ArrowIconGlitch />
               </a>
+            )}
+            {externalApi && !externalDocs && (
               <a
                 href={externalApi}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
+                className="group w-fit text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
               >
                 Component API
                 <ArrowIconGlitch />
               </a>
-            </div>
-          )}
+            )}
+            {externalDocs && externalApi && (
+              <div className="flex items-center gap-2">
+                <a
+                  href={externalDocs}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
+                >
+                  Docs
+                  <ArrowIconGlitch />
+                </a>
+                <a
+                  href={externalApi}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group text-xs text-neutral-700 dark:text-neutral-200 transition-all duration-200 border border-neutral-300 dark:border-neutral-800 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-neutral-200/40 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800/60"
+                >
+                  Component API
+                  <ArrowIconGlitch />
+                </a>
+              </div>
+            )}
+          </div>
+          <MDX source={content} />
+          <Pagination
+            back={{
+              href: previousComponent ? `/docs/${previousComponent.slug}` : "",
+              title: previousComponent ? previousComponent.title : "",
+            }}
+            next={{
+              href: nextComponent ? `/docs/${nextComponent.slug}` : "",
+              title: nextComponent ? nextComponent.title : "",
+            }}
+          />
         </div>
-        <MDX source={content} />
-        <Pagination
-          back={{
-            href: previousComponent ? `/docs/${previousComponent.slug}` : "",
-            title: previousComponent ? previousComponent.title : "",
-          }}
-          next={{
-            href: nextComponent ? `/docs/${nextComponent.slug}` : "",
-            title: nextComponent ? nextComponent.title : "",
-          }}
-        />
-      </div>
-    </main>
+      </main>
+    </DocLayout>
   );
 }
 

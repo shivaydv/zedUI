@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -29,30 +29,38 @@ export function ComponentView({
     setReloadKey((prevKey) => prevKey + 1);
   }
 
+  useEffect(() => {
+    if (isFullScreen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isFullScreen]);
+
   return (
     <>
       <div
         className={cn(
-          "relative border-neutral-300/50 bg-background dark:border-neutral-800/40 rounded-xl border px-4",
+          "relative border-neutral-300/50 bg-background dark:border-neutral-800/40 rounded-xl border p-6",
           className
         )}
       >
         {showRefresh ? <div key={reloadKey}>{children}</div> : children}
 
-        <div className="absolute right-4 top-3 z-50 flex items-center gap-2">
+        <div className="absolute right-4 top-3 z-20 flex items-center gap-2 transition-opacity group-hover:opacity-100 opacity-60">
           {isExpandable && (
             <button
-              className="group flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300/50 bg-neutral-100/50 text-neutral-500 transition-all hover:bg-neutral-100 hover:text-primary dark:border-neutral-800/60 dark:bg-neutral-900/50 dark:hover:bg-neutral-800"
+              className="group/btn flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300/50 bg-background/50 backdrop-blur-sm text-neutral-500 transition-all hover:bg-neutral-100 hover:text-primary dark:border-neutral-800/60 dark:bg-neutral-900/50 dark:hover:bg-neutral-800 shadow-sm"
               onClick={() => setIsFullScreen(true)}
               title="Full Screen"
             >
-              <Maximize2Icon size={14} className="transition-transform group-hover:scale-110" />
+              <Maximize2Icon size={14} className="transition-transform group-hover/btn:scale-110" />
             </button>
           )}
 
           {showRefresh && (
             <button
-              className="group flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300/50 bg-neutral-100/50 text-neutral-500 transition-all hover:bg-neutral-100 hover:text-primary dark:border-neutral-800/60 dark:bg-neutral-900/50 dark:hover:bg-neutral-800"
+              className="group/btn flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300/50 bg-background/50 backdrop-blur-sm text-neutral-500 transition-all hover:bg-neutral-100 hover:text-primary dark:border-neutral-800/60 dark:bg-neutral-900/50 dark:hover:bg-neutral-800 shadow-sm"
               onClick={handleReload}
               title="Reload"
             >
@@ -61,7 +69,7 @@ export function ComponentView({
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="flex items-center justify-center"
               >
-                <RotateCwIcon size={14} className="transition-transform group-hover:scale-110" />
+                <RotateCwIcon size={14} className="transition-transform group-hover/btn:scale-110" />
               </motion.div>
             </button>
           )}
@@ -69,17 +77,40 @@ export function ComponentView({
       </div>
 
       {isFullScreen && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center bg-background/80 backdrop-blur-sm">
-          <div className="absolute top-6 right-6 z-101">
-            <button
-              onClick={() => setIsFullScreen(false)}
-              className="rounded-full bg-neutral-100 p-2.5 text-neutral-500 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700"
-            >
-              <XIcon size={24} />
-            </button>
+        <div className="fixed inset-0 z-100 flex flex-col bg-background">
+          <div className="flex items-center justify-between border-b dark:border-neutral-800 p-4 px-6 bg-background/80 backdrop-blur-md">
+            <h2 className="text-sm font-medium text-neutral-500 uppercase tracking-wider font-mono">Component Preview</h2>
+            <div className="flex items-center gap-3">
+              {showRefresh && (
+                <button
+                  className="group flex items-center gap-2 rounded-lg border border-neutral-300/50 bg-neutral-100/50 px-3 py-1.5 text-xs font-semibold text-neutral-500 transition-all hover:bg-neutral-100 hover:text-primary dark:border-neutral-800/60 dark:bg-neutral-900/50 dark:hover:bg-neutral-800 shadow-sm"
+                  onClick={handleReload}
+                >
+                  <motion.div
+                    animate={{ rotate: reloadKey * 360 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="flex items-center justify-center"
+                  >
+                    <RotateCwIcon size={14} />
+                  </motion.div>
+                  Refresh
+                </button>
+              )}
+              <button
+                onClick={() => setIsFullScreen(false)}
+                className="group flex items-center gap-2 rounded-lg border border-neutral-300/50 bg-neutral-100/50 px-3 py-1.5 text-xs font-semibold text-neutral-500 transition-all hover:bg-neutral-100 hover:text-primary dark:border-neutral-800/60 dark:bg-neutral-900/50 dark:hover:bg-neutral-800 shadow-sm"
+              >
+                <XIcon size={14} />
+                Close
+              </button>
+            </div>
           </div>
-          <div className="h-[90vh] w-[90vw] overflow-auto rounded-2xl border border-neutral-200 bg-background p-10 shadow-2xl dark:border-neutral-800 flex items-center justify-center">
-            {children}
+          <div className="flex-1 overflow-auto bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#262626_1px,transparent_1px)] bg-size-[16px_16px]">
+            <div className="mx-auto min-h-full w-full max-w-7xl p-6 md:p-10">
+              <div className="relative w-full rounded-2xl border border-neutral-200 bg-background shadow-2xl dark:border-neutral-800" key={reloadKey}>
+                {children}
+              </div>
+            </div>
           </div>
         </div>
       )}
