@@ -8,9 +8,9 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import type { PluggableList } from "unified";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
-import { Button } from "@/registry/button";
+import { Button } from "@/registry/ui/button";
 import {
   Tabs,
   TabsContent,

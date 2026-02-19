@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useId, useMemo } from 'react'
 
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/utils'
 
 type TextMorphProps = {
   children: string

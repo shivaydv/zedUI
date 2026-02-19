@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 const TECH_STACK = [
     { name: "React" },

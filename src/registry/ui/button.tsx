@@ -5,7 +5,7 @@ import { useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import * as Slot from '@radix-ui/react-slot'
 
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/utils'
 
 type Variant = {
   variant: string
@@ -71,7 +71,7 @@ const variants = [
         className={cn(
           'animate-shine items-center justify-center rounded-xl border border-border bg-[length:400%_100%]',
           'px-4 py-2 text-primary-invert/90 transition-colors dark:text-primary-muted',
-					"bg-[linear-gradient(110deg,#000000,45%,#303030,55%,#000000)]",
+          "bg-[linear-gradient(110deg,#000000,45%,#303030,55%,#000000)]",
           'dark:bg-[linear-gradient(110deg,#000103,45%,#303030,55%,#000103)]',
           className,
         )}
@@ -204,7 +204,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const FALLBACK_INDEX = 0
-  
+
   const variantComponent = variants.find(v => v.variant === variant)?.component
 
   const Component = variantComponent || variants[FALLBACK_INDEX].component
@@ -230,10 +230,10 @@ function Magnetic({ children }: { children: React.ReactNode }) {
   const { ref, handleMouseMove, handleMouseLeave, x, y } = useMagnetic()
 
   return (
-    <motion.div 
-      ref={ref} 
-      onMouseMove={handleMouseMove} 
-      onMouseLeave={handleMouseLeave} 
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       animate={{ x, y }}
       transition={{
         type: 'spring',

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 type PaginationProps = {

@@ -2,8 +2,8 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { cn } from "@/utils/cn";
-import { Button } from "@/registry/button";
+import { cn } from "@/lib/utils";
+import { Button } from "@/registry/ui/button";
 
 const BENTO_ITEMS = [
   {

@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 
 import { Icons } from "@/components/shared/Icons";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 export function ToggleTheme() {
   const { setTheme, resolvedTheme: theme } = useTheme();

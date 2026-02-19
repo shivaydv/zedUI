@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/utils'
 
 type TextAnimateEnterProps = {
   text: string

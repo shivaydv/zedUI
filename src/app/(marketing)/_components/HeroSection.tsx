@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Github } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);

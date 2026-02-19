@@ -2,9 +2,9 @@
 
 import { useMemo } from "react";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
-import { usePackageManager } from "@/hooks/use-package-manager";
+import { usePackageManager } from "@/registry/hooks/use-package-manager";
 
 import { CopyCode } from "./CopyCode";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";

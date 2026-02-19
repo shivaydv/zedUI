@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 
 import { RotateCwIcon } from "lucide-react";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 type ComponentViewProps = {
   isReloadAnimation?: boolean;

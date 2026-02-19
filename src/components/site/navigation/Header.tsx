@@ -15,7 +15,7 @@ import { CommandMenu } from "@/components/site/cmdk";
 import { MobileMenu } from "./MobileMenu";
 
 import { siteConfig } from "@/config/site";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 const ITEMS = [
   {

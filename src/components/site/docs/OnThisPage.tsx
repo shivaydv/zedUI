@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { motion } from "motion/react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
 type Heading = {
@@ -26,7 +26,7 @@ export function OnThisPage() {
     return Array.from(headingElement)
       .filter((heading) => {
         const isInDialog = heading.closest('[role="dialog"]');
-				
+
         return heading.id && !isInDialog;
       })
       .map((heading) => ({

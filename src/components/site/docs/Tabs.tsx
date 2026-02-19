@@ -11,7 +11,7 @@ import {
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 export const Tabs = TabsPrimitive.Root;
 
@@ -82,8 +82,8 @@ export const TabsTrigger = forwardRef<
           "group relative inline-flex -mx-2 px-2 items-center justify-center rounded-none bg-transparent py-2 text-sm font-medium whitespace-nowrap transition-none focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 text-neutral-500 data-[state=active]:text-primary",
           isIndicator && "border border-transparent py-[3px]",
           isIndicator &&
-            isActive &&
-            "bg-main-foreground dark:bg-main-secondary border-border rounded-lg",
+          isActive &&
+          "bg-main-foreground dark:bg-main-secondary border-border rounded-lg",
           className,
         )}
         {...props}

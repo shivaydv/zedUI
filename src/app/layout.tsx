@@ -3,7 +3,7 @@ import { fontSans, fontMono } from "@/utils/fonts";
 
 import "@/styles/globals.css";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 import { ThemeProvider } from "./theme-provider";
 import { Header } from "@/components/site/navigation/Header";
