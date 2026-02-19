@@ -62,7 +62,7 @@ export function ComponentsSection() {
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover grayscale opacity-10 group-hover:opacity-20 transition-opacity duration-700"
+                className="object-cover grayscale opacity-30  group-hover:opacity-40 transition-opacity duration-700"
               />
               <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent" />
             </div>
@@ -82,7 +82,7 @@ export function ComponentsSection() {
       {/* Extreme Minimal Showcases - Reduced size */}
       <div className="space-y-10">
         <h2 className="text-xl font-medium text-foreground uppercase tracking-widest text-[13px] opacity-40">
-          Components Library
+          Components Showcase
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {PREVIEW_COMPONENTS.map((item, idx) => (

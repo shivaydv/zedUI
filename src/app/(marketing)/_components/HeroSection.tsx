@@ -57,40 +57,52 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Hero Visuals - Moody Aesthetic Mix */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Hero Visuals - Clean Staggered Layout with Smooth Entrance */}
+        <div className="relative grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mt-12 md:mt-0">
           <motion.div
             style={{ y: y1 }}
-            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl group"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.6, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-2xl md:rounded-3xl group"
           >
             <Image
               src="/dummy-images/hero1.avif"
               alt="Abstract Moody 1"
               fill
+              priority
               className="object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
             />
           </motion.div>
 
           <motion.div
             style={{ y: y3 }}
-            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl shadow-2xl group"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.6, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-2xl md:rounded-3xl shadow-2xl group z-10"
           >
             <Image
               src="/dummy-images/hero2.avif"
               alt="Abstract Moody 2"
               fill
+              priority
               className="object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
             />
           </motion.div>
 
           <motion.div
             style={{ y: y2 }}
-            className="aspect-4/5 relative overflow-hidden bg-muted/20 rounded-3xl group"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.6, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
+            className="col-span-2 md:col-span-1 aspect-3/2 md:aspect-4/5 relative overflow-hidden bg-muted/20 rounded-2xl md:rounded-3xl group"
           >
             <Image
               src="/dummy-images/hero3.avif"
               alt="Abstract Moody 3"
               fill
+              priority
               className="object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
             />
           </motion.div>
