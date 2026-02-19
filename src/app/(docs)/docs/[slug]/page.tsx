@@ -40,12 +40,12 @@ export async function generateMetadata({
       title: `Zed UI: ${title}`,
       description,
       type: "website",
-      url: `https://zed-ui.com/docs/${slugDocs}`,
+      url: `https://zedui.vercel.app/docs/${slugDocs}`,
       images: [
         {
           width: 1920,
           height: 1080,
-          url: "https://zed-ui.com/open-graphs/og-browse-components.png",
+          url: "https://zedui.vercel.app/open-graphs/og-website.png",
           alt: "Zed UI website cover",
         },
       ],
@@ -58,7 +58,7 @@ export async function generateMetadata({
         {
           width: 1920,
           height: 1080,
-          url: "https://zed-ui.com/open-graphs/og-browse-components.png",
+          url: "https://zedui.vercel.app/open-graphs/og-website.png",
           alt: "Zed UI website cover",
         },
       ],

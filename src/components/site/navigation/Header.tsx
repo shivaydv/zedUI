@@ -14,6 +14,7 @@ import { ToggleTheme } from "@/components/site/docs/ToggleTheme";
 import { CommandMenu } from "@/components/site/cmdk";
 import { MobileMenu } from "./MobileMenu";
 
+import { siteConfig } from "@/config/site";
 import { cn } from "@/utils/cn";
 
 const ITEMS = [
@@ -110,7 +111,7 @@ export function Header() {
               </div>
               <Divider />
               <a
-                href="https://github.com/zed-ui/zed-ui"
+                href={siteConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group rounded-md p-0.5 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
@@ -121,7 +122,7 @@ export function Header() {
           </div>
           <div className="flex items-center gap-3 [@media(min-width:663px)]:hidden">
             <a
-              href="https://github.com/zed-ui/zed-ui"
+              href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
               className="group rounded-md p-0.5 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"

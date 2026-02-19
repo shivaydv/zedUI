@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
 
 import { AnimateEnter } from "@/components/shared/AnimateEnter";
+import { siteConfig } from "@/config/site";
 
 export const NAVIGATE = [
   {
@@ -37,12 +38,12 @@ export function Footer() {
             <p className="text-[13px] text-neutral-500 dark:text-neutral-400">
               &#169; {getFullYear()},{" "}
               <a
-                href="https://guhrodrigues.com"
+                href={siteConfig.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
               >
-                Zed UI Team.
+                {siteConfig.author.name}.
               </a>
             </p>
           </AnimateEnter>
@@ -66,7 +67,7 @@ export function Footer() {
             </AnimateEnter>
             <AnimateEnter delay={0.2} className="flex gap-5">
               <a
-                href="https://github.com/shivaydv/ZedUI"
+                href={siteConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-neutral-500 dark:text-neutral-400 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
@@ -75,12 +76,12 @@ export function Footer() {
                 <ArrowIconGlitch />
               </a>
               <a
-                href="https://x.com/shivay1256"
+                href={siteConfig.links.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-1 rounded group flex w-fit items-center gap-1 text-[13px] text-neutral-500 dark:text-neutral-400 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
               >
-                X (Twitter)
+                Twitter
                 <ArrowIconGlitch />
               </a>
             </AnimateEnter>

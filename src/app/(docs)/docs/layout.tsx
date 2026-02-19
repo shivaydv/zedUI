@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       {
         width: 1920,
         height: 1080,
-        url: "https://zed-ui.com/open-graphs/og-browse-components.png",
+        url: "https://zedui.vercel.app/open-graphs/og-website.png",
         alt: "Zed UI website cover",
       },
     ],
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     description:
       "Navigate to all the components that will make your application sophisticated and elegant.",
     type: "website",
-    url: "https://zed-ui.com/docs",
+    url: "https://zedui.vercel.app/docs",
   },
   twitter: {
     images: [
       {
         width: 1920,
         height: 1080,
-        url: "https://zed-ui.com/open-graphs/og-browse-components.png",
+        url: "https://zedui.vercel.app/open-graphs/og-website.png",
         alt: "Zed UI website cover",
       },
     ],

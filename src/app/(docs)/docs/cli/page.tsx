@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       {
         width: 1920,
         height: 1080,
-        url: "https://zed-ui.com/open-graphs/og-cli.png",
+        url: "https://zedui.vercel.app/open-graphs/og-website.png",
         alt: "zed-ui's website cover",
       },
     ],
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     title: "zed-ui: CLI",
     description: "Add components to your app instantly with zed-ui CLI.",
     type: "website",
-    url: "https://zed-ui.com/docs/cli",
+    url: "https://zedui.vercel.app/docs/cli",
   },
   twitter: {
     images: [
       {
         width: 1920,
         height: 1080,
-        url: "https://zed-ui.com/open-graphs/og-cli.png",
+        url: "https://zedui.vercel.app/open-graphs/og-website.png",
         alt: "zed-ui's website cover",
       },
     ],

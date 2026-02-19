@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import { Github } from "lucide-react";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/utils/cn";
 
 export function HeroSection() {
@@ -29,18 +31,42 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto">
         {/* Top Layout */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-16 mb-24">
-          <motion.div
-            className="max-w-3xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, ease: [0.19, 1, 0.22, 1] }}
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tighter leading-[0.95] text-foreground">
-              Ship Polished
-              <br />
-              Interfaces Effortlessly.
-            </h1>
-          </motion.div>
+          <div className="flex flex-col gap-10 max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.4, ease: [0.19, 1, 0.22, 1] }}
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tighter leading-[0.95] text-foreground">
+                Ship Polished
+                <br />
+                Interfaces Effortlessly.
+              </h1>
+            </motion.div>
+
+            <motion.div
+              className="flex flex-wrap items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.4, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+            >
+              <Link
+                href="/docs/installation"
+                className="group relative inline-flex items-center justify-center px-8 py-3 bg-foreground text-background text-sm font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(var(--foreground),0.2)] active:scale-95"
+              >
+                <span className="relative z-10">Explore Components</span>
+              </Link>
+              <Link
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-transparent border border-border text-foreground text-sm font-medium rounded-full transition-all duration-300 hover:bg-muted/10 active:scale-95"
+              >
+                <Github size={16} />
+                Star us on GitHub
+              </Link>
+            </motion.div>
+          </div>
 
           <motion.div
             className="max-w-xs text-muted-foreground/50 text-[14px] leading-relaxed font-light"
