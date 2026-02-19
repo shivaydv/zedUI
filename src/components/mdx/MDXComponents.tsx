@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 import type { MDXComponents } from "mdx/types";
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
@@ -20,90 +21,82 @@ import {
 import { CodeBlock } from "@/components/site/docs/CodeBlock";
 import { CommandBlock } from "@/components/site/docs/CommandBlock";
 import { ComponentView } from "@/components/site/docs/ComponentView";
+import { RegistryCodeBlock } from "@/components/site/docs/RegistryCodeBlock";
+import { Steps, Step } from "@/components/site/docs/Steps";
 import { CopyCode } from "@/components/site/docs/CopyCode";
 import { BlurImage } from "@/components/shared/BlurImage";
+import { BentoGrid, BentoCard } from "@/registry/ui/bento-grid";
 
 const components: MDXComponents = {
-  ComponentView: ({ children, isReloadAnimation, ...props }) => (
+  ComponentView: ({ children, className, ...props }: any) => (
     <ComponentView
-      isReloadAnimation={isReloadAnimation}
-      className={cn(props.className)}
+      className={cn(className)}
       {...props}
     >
       {children}
     </ComponentView>
   ),
-  p: ({ children, ...props }) => (
+  p: ({ children, className, ...props }: any) => (
     <p
-      className="font-normal text-black/80 leading-relaxed dark:text-white/90"
+      className={cn("font-normal text-black/80 leading-relaxed dark:text-white/90", className)}
       {...props}
     >
       {children}
     </p>
   ),
-  h1: ({ children, ...props }) => (
+  h1: ({ children, className, ...props }: any) => (
     <h1
-      className="font-semibold text-3xl text-primary tracking-tight"
+      className={cn("font-semibold text-3xl text-primary tracking-tight", className)}
       {...props}
     >
       {children}
     </h1>
   ),
-  h2: ({ children, ...props }) => (
+  h2: ({ children, className, ...props }: any) => (
     <h2
-      className="font-semibold text-primary text-xl tracking-tight"
+      className={cn("font-semibold text-primary text-xl tracking-tight", className)}
       {...props}
     >
       {children}
     </h2>
   ),
-  h3: ({ children, ...props }) => (
+  h3: ({ children, className, ...props }: any) => (
     <h3
-      className="font-semibold text-primary text-xl tracking-tight"
+      className={cn("font-semibold text-primary text-xl tracking-tight", className)}
       {...props}
     >
       {children}
     </h3>
   ),
-  h4: ({ children, ...props }) => (
-    <h4 className="font-medium text-lg text-primary tracking-tight" {...props}>
+  h4: ({ children, className, ...props }: any) => (
+    <h4 className={cn("font-medium text-lg text-primary tracking-tight", className)} {...props}>
       {children}
     </h4>
   ),
-  CommandBlock: ({
-    children,
-    npmCommand,
-    yarnCommand,
-    pnpmCommand,
-    bunCommand,
-    ...props
-  }) => (
+  CommandBlock: (props: any) => (
     <CommandBlock
-      npmCommand={npmCommand}
-      yarnCommand={yarnCommand}
-      pnpmCommand={pnpmCommand}
-      bunCommand={bunCommand}
-      className={cn(props.className)}
       {...props}
     />
   ),
-  CodeBlock: ({
-    fileName,
-    contentClassName,
-    copyCode = true,
-    customFilePath,
-    ...props
-  }) => (
+  CodeBlock: (props: any) => (
     <CodeBlock
-      fileName={fileName}
-      copyCode={copyCode}
-      className={cn(props.className)}
-      contentClassName={contentClassName}
-      customFilePath={customFilePath}
       {...props}
     />
   ),
-  a: ({ children, className, ...props }) => {
+  RegistryCodeBlock: (props: any) => (
+    <RegistryCodeBlock
+      {...props}
+    />
+  ),
+  Steps: ({ children, ...props }: any) => (
+    <Steps {...props}>{children}</Steps>
+  ),
+  Step: ({ children, ...props }: any) => (
+    <Step {...props}>
+      {children}
+    </Step>
+  ),
+  a: ({ children, className, ...props }: any) => {
     const isExternal = props.href?.startsWith("http");
 
     if (isExternal) {
@@ -135,7 +128,7 @@ const components: MDXComponents = {
       </Link>
     );
   },
-  Link: ({ children, className, isExternal = false, ...props }) => {
+  Link: ({ children, className, isExternal = false, ...props }: any) => {
     if (isExternal) {
       return (
         <a
@@ -155,6 +148,7 @@ const components: MDXComponents = {
     return (
       <Link
         {...props}
+        href={props.href || "#"}
         className={cn(
           "underline decoration-neutral-300 underline-offset-[2.5px] duration-200 hover:text-black hover:decoration-neutral-500 dark:decoration-neutral-500 dark:hover:text-white dark:hover:decoration-neutral-300",
           className
@@ -164,7 +158,7 @@ const components: MDXComponents = {
       </Link>
     );
   },
-  CodeHighlight: ({ children, ...props }) => (
+  CodeHighlight: ({ children, ...props }: any) => (
     <span
       className="rounded-md bg-neutral-300/70 px-1 py-0.5 font-mono text-foreground text-sm dark:bg-neutral-800/70"
       {...props}
@@ -172,32 +166,38 @@ const components: MDXComponents = {
       {children}
     </span>
   ),
-  BlurImage: ({ src, alt, ...props }) => (
-    <BlurImage src={src} alt={alt} {...props} />
+  BlurImage: (props: any) => (
+    <BlurImage {...props} />
   ),
-  Image: ({ src, alt, ...props }) => (
-    <Image src={src} alt={alt} width={1280} height={960} {...props} />
+  Image: (props: any) => (
+    <Image width={1280} height={960} {...props} />
   ),
-  Tabs: ({ ...props }) => (
+  Tabs: (props: any) => (
     <Tabs className={cn("relative w-full", props.className)} {...props} />
   ),
-  TabsList: ({ ...props }) => (
-    <TabsList className={cn(props.className)} {...props} />
+  TabsList: (props: any) => (
+    <TabsList {...props} />
   ),
-  TabsTrigger: ({ ...props }) => (
-    <TabsTrigger className={cn(props.className)} {...props} />
+  TabsTrigger: (props: any) => (
+    <TabsTrigger {...props} />
   ),
-  TabsContent: ({ className, ...props }) => (
-    <TabsContent className={cn(props.className)} {...props} />
+  TabsContent: (props: any) => (
+    <TabsContent {...props} />
   ),
-  CopyCode: ({ code, mode, example, ...props }) => (
-    <CopyCode mode={mode} code={code} example={example} {...props} />
+  CopyCode: (props: any) => (
+    <CopyCode {...props} />
   ),
-  Button: ({ children, variant, ...props }) => (
-    <Button variant={variant} className={cn(props.className)} {...props}>
+  Button: ({ children, ...props }: any) => (
+    <Button {...props}>
       {children}
     </Button>
   ),
+  BentoGrid: ({ children, ...props }: any) => (
+    <BentoGrid {...props}>
+      {children}
+    </BentoGrid>
+  ),
+  BentoCard: (props: any) => <BentoCard {...props} />,
 };
 
 export function useMDXComponents(components: MDXComponents) {
@@ -233,5 +233,3 @@ export function MDX(props: MDXRemoteProps) {
     />
   );
 }
-
-

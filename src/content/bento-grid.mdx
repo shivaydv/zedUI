@@ -1,0 +1,200 @@
+---
+title: "Bento Grid"
+description: "A premium bento grid layout with animated cards and reveal effects."
+slug: "bento-grid"
+---
+
+<div className="space-y-2">
+
+<div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
+
+## Showcase
+
+</div>
+
+<div className="mt-12">
+
+<div className="mt-6 text-neutral-500">
+  This is a bento grid component. It is a large block that demonstrates how to handle complex layouts with many animated children.
+</div>
+
+</div>
+
+<Tabs defaultValue="preview">
+
+<div className="flex items-center justify-between">
+
+<TabsList>
+	<TabsTrigger value="preview">Preview</TabsTrigger>
+	<TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
+<CopyCode
+	code={`import { BentoGrid, BentoCard } from "@/components/ui/bento-grid"
+
+export function BentoGridExample() {
+  return (
+    <BentoGrid>
+      <BentoCard
+        name="Infinite Scalability"
+        description="Our system scales with your business, whether you're a startup or an enterprise."
+        className="md:col-span-2 md:row-span-1"
+        background={<div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-purple-500/10" />}
+      />
+      <BentoCard
+        name="Real-time Analytics"
+        description="Get insights as they happen with our instant data processing engine."
+        className="md:col-span-1 md:row-span-2"
+        background={<div className="absolute inset-0 bg-linear-to-tr from-orange-500/10 to-yellow-500/10" />}
+      />
+      <BentoCard
+        name="Secure by Design"
+        description="We implement industry-leading security practices to keep your data safe."
+        className="md:col-span-1 md:row-span-1"
+        background={<div className="absolute inset-0 bg-linear-to-bl from-green-500/10 to-emerald-500/10" />}
+      />
+      <BentoCard
+        name="Global Reach"
+        description="Deploy your application to edge locations worldwide with a single click."
+        className="md:col-span-1 md:row-span-1"
+        background={<div className="absolute inset-0 bg-linear-to-r from-pink-500/10 to-rose-500/10" />}
+      />
+    </BentoGrid>
+  )
+}`}
+	mode="text"
+/>
+
+</div>
+
+<TabsContent value="preview">
+
+<ComponentView isExpandable isRefreshable className="p-10 flex items-center justify-center">
+
+<BentoGrid>
+    <BentoCard
+      name="Infinite Scalability"
+      description="Our system scales with your business, whether you're a startup or an enterprise."
+      className="md:col-span-2 md:row-span-1"
+      background={<div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-purple-500/10" />}
+    />
+    <BentoCard
+      name="Real-time Analytics"
+      description="Get insights as they happen with our instant data processing engine."
+      className="md:col-span-1 md:row-span-2"
+      background={<div className="absolute inset-0 bg-linear-to-tr from-orange-500/10 to-yellow-500/10" />}
+    />
+    <BentoCard
+      name="Secure by Design"
+      description="We implement industry-leading security practices to keep your data safe."
+      className="md:col-span-1 md:row-span-1"
+      background={<div className="absolute inset-0 bg-linear-to-bl from-green-500/10 to-emerald-500/10" />}
+    />
+    <BentoCard
+      name="Global Reach"
+      description="Deploy your application to edge locations worldwide with a single click."
+      className="md:col-span-1 md:row-span-1"
+      background={<div className="absolute inset-0 bg-linear-to-r from-pink-500/10 to-rose-500/10" />}
+    />
+  </BentoGrid>
+
+</ComponentView>
+
+</TabsContent>
+
+<TabsContent value="code">
+
+<CodeBlock contentClassName="h-fit">
+
+```tsx
+import { BentoGrid, BentoCard } from "@/components/ui/bento-grid"
+
+export function BentoGridExample() {
+  return (
+    <BentoGrid>
+      <BentoCard
+        name="Infinite Scalability"
+        description="Our system scales with your business, whether you're a startup or an enterprise."
+        className="md:col-span-2 md:row-span-1"
+        background={<div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-purple-500/10" />}
+      />
+      <BentoCard
+        name="Real-time Analytics"
+        description="Get insights as they happen with our instant data processing engine."
+        className="md:col-span-1 md:row-span-2"
+        background={<div className="absolute inset-0 bg-linear-to-tr from-orange-500/10 to-yellow-500/10" />}
+      />
+      <BentoCard
+        name="Secure by Design"
+        description="We implement industry-leading security practices to keep your data safe."
+        className="md:col-span-1 md:row-span-1"
+        background={<div className="absolute inset-0 bg-linear-to-bl from-green-500/10 to-emerald-500/10" />}
+      />
+      <BentoCard
+        name="Global Reach"
+        description="Deploy your application to edge locations worldwide with a single click."
+        className="md:col-span-1 md:row-span-1"
+        background={<div className="absolute inset-0 bg-linear-to-r from-pink-500/10 to-rose-500/10" />}
+      />
+    </BentoGrid>
+  )
+}
+```
+
+</CodeBlock>
+
+</TabsContent>
+
+</Tabs>
+
+</div>
+
+<div className="space-y-2 pt-4">
+
+<div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
+
+## Installation
+
+</div>
+
+<Tabs defaultValue="cli">
+
+<div className="flex items-center justify-between">
+
+<TabsList className="pl-0">
+	<TabsTrigger value="cli">CLI</TabsTrigger>
+	<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+</div>
+
+<TabsContent value="cli">
+
+<CommandBlock npmCommand="npx zed-ui add bento-grid" />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+<Step title="Install the packages" number="1">
+
+<CommandBlock npmCommand="npm i motion lucide-react" />
+
+</Step>
+
+<Step title="Copy and paste the following code into your project" number="2">
+
+<RegistryCodeBlock name="bento-grid" />
+
+</Step>
+
+<Step title="Update the import paths to match your project setup" number="3" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+</div>

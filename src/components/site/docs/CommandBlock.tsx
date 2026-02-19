@@ -13,9 +13,9 @@ type PackageManager = "npm" | "pnpm" | "yarn" | "bun";
 
 type CommandBlockProps = {
   npmCommand: string;
-  yarnCommand: string;
-  pnpmCommand: string;
-  bunCommand: string;
+  yarnCommand?: string;
+  pnpmCommand?: string;
+  bunCommand?: string;
 } & React.ComponentProps<"div">;
 
 export function CommandBlock({
@@ -28,11 +28,30 @@ export function CommandBlock({
   const [packageManager, setPackageManager] = usePackageManager();
 
   const tabs = useMemo(() => {
+    // Helper to transform npm commands to other package managers
+    const generateCommand = (cmd: string, target: PackageManager) => {
+      if (cmd.startsWith("npx ")) {
+        const pkg = cmd.replace("npx ", "");
+        if (target === "pnpm") return `pnpm dlx ${pkg}`;
+        if (target === "bun") return `bunx --bun ${pkg}`;
+        if (target === "yarn") return `yarn dlx ${pkg}`;
+        return cmd;
+      }
+      if (cmd.startsWith("npm install ") || cmd.startsWith("npm i ")) {
+        const pkgs = cmd.replace(/^npm (install|i) /, "");
+        if (target === "pnpm") return `pnpm add ${pkgs}`;
+        if (target === "yarn") return `yarn add ${pkgs}`;
+        if (target === "bun") return `bun add ${pkgs}`;
+        return cmd;
+      }
+      return cmd;
+    };
+
     return {
       npm: npmCommand,
-      pnpm: pnpmCommand,
-      yarn: yarnCommand,
-      bun: bunCommand,
+      pnpm: pnpmCommand || generateCommand(npmCommand, "pnpm"),
+      yarn: yarnCommand || generateCommand(npmCommand, "yarn"),
+      bun: bunCommand || generateCommand(npmCommand, "bun"),
     };
   }, [npmCommand, pnpmCommand, yarnCommand, bunCommand]);
 

@@ -37,4 +37,16 @@ export const registry: Registry = [
             },
         ],
     },
+    {
+        name: "bento-grid",
+        type: "registry:ui",
+        description: "A premium bento grid layout with animated cards and reveal effects.",
+        dependencies: ["motion", "lucide-react"],
+        files: [
+            {
+                path: "registry/ui/bento-grid.tsx",
+                type: "registry:ui",
+            },
+        ],
+    },
 ]

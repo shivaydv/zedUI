@@ -49,13 +49,17 @@ export function CodeBlock({
             </span>
           </div>
           <CopyCode
-            code={
-              customFilePath
-                ? getFileContent(customFilePath, "")
-                : simpleCode
-                  ? simpleCode
-                  : getFileContent("registry", fileName)
-            }
+            code={(() => {
+              if (simpleCode) return simpleCode;
+              try {
+                if (customFilePath) return getFileContent(customFilePath, "");
+                if (fileName) return getFileContent("registry", fileName);
+                return "";
+              } catch (e) {
+                console.error(`CodeBlock Error: ${e}`);
+                return "// Error: Content not found";
+              }
+            })()}
           />
         </div>
       )}
