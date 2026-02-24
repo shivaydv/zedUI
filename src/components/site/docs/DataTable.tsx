@@ -22,7 +22,7 @@ export function DataTable({ data, columns, className }: DataTableProps) {
                 <table className="w-full text-left text-sm">
                     <thead className="border-b border-neutral-200 bg-neutral-50/50 text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900/50 dark:text-neutral-400">
                         <tr>
-                            {columns.map((column, idx) => (
+                            {columns?.map((column, idx) => (
                                 <th
                                     key={idx}
                                     className={cn(
@@ -36,12 +36,12 @@ export function DataTable({ data, columns, className }: DataTableProps) {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
-                        {data.map((row, rowIdx) => (
+                        {data?.map((row, rowIdx) => (
                             <tr
                                 key={rowIdx}
                                 className="group transition-colors hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40"
                             >
-                                {columns.map((column, colIdx) => (
+                                {columns?.map((column, colIdx) => (
                                     <td
                                         key={colIdx}
                                         className={cn(
