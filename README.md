@@ -1,9 +1,5 @@
 # Zed UI
 
-<p align="center">
-  <img src="public/opengraph-image.png" alt="Zed UI Logo" width="100%" style="border-radius: 10px;" />
-</p>
-
 **Ship Polished Interfaces Effortlessly.**
 
 Zed UI is a premium, motion-rich component library built for React and Tailwind CSS. It’s designed for developers who want to create high-fidelity, production-ready interfaces with a focus on vibrant aesthetics and smooth animations.
@@ -80,3 +76,4 @@ Licensed under the [MIT License](./LICENSE).
 <p align="center">
   Built with ❤️ by <a href="https://x.com/shivay1256">Shiva Yadav</a>
 </p>
+
