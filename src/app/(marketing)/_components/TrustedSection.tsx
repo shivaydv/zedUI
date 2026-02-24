@@ -1,15 +1,12 @@
 "use client";
 
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
-
 const TECH_STACK = [
     { name: "React" },
     { name: "TypeScript" },
     { name: "Next.js" },
     { name: "Tailwind CSS" },
     { name: "Framer Motion" },
-    { name: "Radix UI" },
+    { name: "Base UI" },
 ];
 
 export function TrustedSection() {

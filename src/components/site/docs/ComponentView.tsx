@@ -106,8 +106,8 @@ export function ComponentView({
             </div>
           </div>
           <div className="flex-1 overflow-auto bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#262626_1px,transparent_1px)] bg-size-[16px_16px]">
-            <div className="mx-auto min-h-full w-full max-w-7xl p-6 md:p-10">
-              <div className="relative w-full rounded-2xl border border-neutral-200 bg-background shadow-2xl dark:border-neutral-800" key={reloadKey}>
+            <div className="mx-auto flex min-h-full w-full max-w-7xl items-center justify-center p-6 md:p-10">
+              <div className="relative flex min-h-[450px] w-full items-center justify-center rounded-2xl border border-neutral-200 bg-background p-12 shadow-2xl dark:border-neutral-800 md:p-24" key={reloadKey}>
                 {children}
               </div>
             </div>

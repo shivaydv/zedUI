@@ -8,10 +8,9 @@ import { MDX } from "@/components/mdx/MDXComponents";
 
 import { ArrowUpRightIcon } from "lucide-react";
 
-const Docs = getDocs().sort((a, b) => a.title.localeCompare(b.title));
-
 export async function generateStaticParams() {
-  return Docs.map((docs) => ({
+  const StaticDocs = getDocs();
+  return StaticDocs.map((docs) => ({
     slug: docs.slug,
   }));
 }
@@ -26,7 +25,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
   const { slug } = await params;
-
+  const Docs = getDocs();
   const docs = Docs.find((docs) => docs.slug === slug);
 
   if (!docs) {
@@ -51,6 +50,7 @@ export default async function ComponentPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const Docs = getDocs().sort((a, b) => a.title.localeCompare(b.title));
 
   const docs = Docs.find((docs) => docs.slug === slug);
 

@@ -1,164 +1,71 @@
-import Link from "next/link";
 import { Metadata } from "next";
-
-import { AnimateEnter } from "@/components/shared/AnimateEnter";
-import { BlurImage } from "@/components/shared/BlurImage";
-import { Divider } from "@/components/shared/Divider";
-
+import Link from "next/link";
 import { UPDATES } from "@/data/updates";
+import { AnimateEnter } from "@/components/shared/AnimateEnter";
+import { constructMetadata } from "@/config/metadata";
+import { BlurImage } from "@/components/shared/BlurImage";
 
-export const metadata: Metadata = {
-  title: "Updates",
-  description: "Discover the latest updates from zed-ui.",
-  openGraph: {
-    images: [
-      {
-        width: 1920,
-        height: 1080,
-        url: "https://zed-ui.com/open-graphs/og-website.png",
-        alt: "zed-ui's website cover",
-      },
-    ],
-    locale: "en",
-    siteName: "Zed UI Team",
-    title: "zed-ui: Updates",
-    description: "Discover the latest updates from zed-ui.",
-    type: "website",
-    url: "https://zed-ui.com/updates",
-  },
-  twitter: {
-    images: [
-      {
-        width: 1920,
-        height: 1080,
-        url: "https://zed-ui.com/open-graphs/og-website.png",
-        alt: "zed-ui's website cover",
-      },
-    ],
-    card: "summary_large_image",
-    title: "zed-ui: Updates",
-    description: "Discover the latest updates from zed-ui.",
-    site: "@zedui",
-    creator: "Zed UI Team",
-  },
-};
+export const metadata: Metadata = constructMetadata({
+    title: "Updates",
+    description: "Stay up to date with the latest features and improvements to Zed UI.",
+});
 
 export default function UpdatesPage() {
-  return (
-    <main className="flex flex-col gap-24 w-full max-w-7xl mx-auto px-6 pt-24 sm:pt-32 pb-24">
-      {UPDATES.slice(0, 1).map(
-        ({ title, author, author_image, banner, date, description, href }) => (
-          <Link key={title} href={`/updates/${href}`}>
-            <AnimateEnter
-              delay={0.1}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-y-8 gap-x-12 xl:gap-x-20"
-            >
-              <div className="lg:col-span-2 lg:w-[650px] xl:w-full">
-                <div className="overflow-hidden border border-transparent dark:border-neutral-900 rounded-2xl">
-                  <BlurImage src={banner} alt="zed-ui 2.0" />
+    return (
+        <main className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+            <AnimateEnter delay={0.1}>
+                <div className="mx-auto max-w-2xl lg:mx-0">
+                    <h2 className="text-4xl font-semibold tracking-tight text-primary sm:text-5xl">Updates</h2>
+                    <p className="mt-6 text-lg leading-8 text-neutral-600 dark:text-neutral-400">
+                        Keep up with our latest releases, announcements, and deep dives into the world of premium UI.
+                    </p>
                 </div>
-              </div>
-              <div className="flex flex-col gap-6 py-3 max-lg:justify-center max-lg:items-center">
-                <div className="group w-fit relative block rounded-full py-1 px-2.5 bg-[#eeeeee] dark:bg-[#161616] dark:shadow-inner dark:shadow-neutral-800/80 border border-neutral-400/20 dark:border-neutral-700/70">
-                  <div className="relative z-10 flex items-center justify-between">
-                    <span className="font-medium text-gradient tracking-tight text-sm">
-                      Latest
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-6 lg:gap-9 max-lg:items-center max-lg:justify-center max-lg:text-center">
-                  <h1 className="font-normal text-4xl sm:text-5xl text-gradient tracking-tight md:text-6xl">
-                    {title}
-                  </h1>
-                  <span className="text-foreground max-lg:max-w-lg max-lg:w-full max-lg:mx-auto lg:w-[320px]">
-                    {description}
-                  </span>
-                </div>
-                <div className="flex items-center gap-4 mt-auto">
-                  <div className="flex items-center gap-2.5">
-                    <div className="rounded-full overflow-hidden">
-                      <BlurImage
-                        src={author_image}
-                        alt={`${author.split(" ")[0]}'s profile picture`}
-                        className="rounded-full"
-                        width={32}
-                        height={32}
-                      />
-                    </div>
-                    <span className="text-gradient text-sm font-[460]">
-                      {author}
-                    </span>
-                  </div>
-                  <Divider />
-                  <span className="text-gradient text-sm font-[460]">
-                    {date}
-                  </span>
-                </div>
-              </div>
             </AnimateEnter>
-          </Link>
-        ),
-      )}
-      <div className="space-y-7">
-        <AnimateEnter delay={0.2}>
-          <h1 className="font-normal text-gradient tracking-tight text-2xl">
-            All Updates
-          </h1>
-        </AnimateEnter>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {UPDATES.map(
-            (
-              { title, author, author_image, banner, date, description, href },
-              index,
-            ) => (
-              <Link key={title} href={`/updates/${href}`}>
-                <AnimateEnter
-                  delay={0.3 + index * 0.05}
-                  className="flex flex-col gap-4"
-                >
-                  <div className="overflow-hidden border border-transparent dark:border-neutral-900 rounded-xl">
-                    <BlurImage src={banner} alt="zed-ui 2.0" />
-                  </div>
-                  <div className="flex flex-col gap-6 py-3">
-                    <div className="flex flex-col gap-4">
-                      <h1 className="font-normal text-gradient tracking-tight text-2xl">
-                        {title}
-                      </h1>
-                      <span className="text-foreground text-[16px]">
-                        {description}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2.5">
-                        <div className="rounded-full overflow-hidden">
-                          <BlurImage
-                            src={author_image}
-                            alt={`${author.split(" ")[0]}'s profile picture`}
-                            className="rounded-full"
-                            width={32}
-                            height={32}
-                          />
-                        </div>
-                        <span className="text-gradient text-sm font-[460]">
-                          {author}
-                        </span>
-                      </div>
-                      <Divider />
-                      <span className="text-gradient text-sm font-[460]">
-                        {date}
-                      </span>
-                    </div>
-                  </div>
-                </AnimateEnter>
-              </Link>
-            ),
-          )}
-        </div>
-      </div>
-    </main>
-  );
+
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                {UPDATES.map((update, index) => (
+                    <AnimateEnter key={update.href} delay={0.2 + index * 0.1}>
+                        <article className="flex flex-col items-start justify-between group">
+                            <Link href={`/updates/${update.href}`} className="relative w-full aspect-video overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-border">
+                                <BlurImage
+                                    src={update.banner || ""}
+                                    alt={update.title}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </Link>
+                            <div className="max-w-xl">
+                                <div className="mt-8 flex items-center gap-x-4 text-xs text-neutral-500">
+                                    <time dateTime={update.date}>{update.date}</time>
+                                </div>
+                                <div className="group relative">
+                                    <h3 className="mt-3 text-xl font-semibold leading-6 text-primary group-hover:text-primary/80">
+                                        <Link href={`/updates/${update.href}`}>
+                                            <span className="absolute inset-0" />
+                                            {update.title}
+                                        </Link>
+                                    </h3>
+                                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                                        {update.description}
+                                    </p>
+                                </div>
+                                <div className="relative mt-8 flex items-center gap-x-4">
+                                    <img
+                                        src={update.author_image}
+                                        alt={update.author}
+                                        className="h-10 w-10 rounded-full bg-neutral-50"
+                                    />
+                                    <div className="text-sm leading-6">
+                                        <p className="font-semibold text-primary">
+                                            {update.author}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </AnimateEnter>
+                ))}
+            </div>
+        </main>
+    );
 }
-
-
-
-

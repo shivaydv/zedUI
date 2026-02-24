@@ -12,7 +12,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
 type PackageManager = "npm" | "pnpm" | "yarn" | "bun";
 
 type CommandBlockProps = {
-  npmCommand: string;
+  npmCommand?: string;
+  bashCommand?: string;
   yarnCommand?: string;
   pnpmCommand?: string;
   bunCommand?: string;
@@ -20,6 +21,7 @@ type CommandBlockProps = {
 
 export function CommandBlock({
   npmCommand,
+  bashCommand,
   yarnCommand,
   pnpmCommand,
   bunCommand,
@@ -27,9 +29,13 @@ export function CommandBlock({
 }: CommandBlockProps) {
   const [packageManager, setPackageManager] = usePackageManager();
 
+  const activeNpmCommand = npmCommand || bashCommand;
+
   const tabs = useMemo(() => {
     // Helper to transform npm commands to other package managers
-    const generateCommand = (cmd: string, target: PackageManager) => {
+    const generateCommand = (cmd: string | undefined, target: PackageManager) => {
+      if (!cmd) return "";
+
       if (cmd.startsWith("npx ")) {
         const pkg = cmd.replace("npx ", "");
         if (target === "pnpm") return `pnpm dlx ${pkg}`;
@@ -48,12 +54,12 @@ export function CommandBlock({
     };
 
     return {
-      npm: npmCommand,
-      pnpm: pnpmCommand || generateCommand(npmCommand, "pnpm"),
-      yarn: yarnCommand || generateCommand(npmCommand, "yarn"),
-      bun: bunCommand || generateCommand(npmCommand, "bun"),
+      npm: activeNpmCommand || "",
+      pnpm: pnpmCommand || generateCommand(activeNpmCommand, "pnpm"),
+      yarn: yarnCommand || generateCommand(activeNpmCommand, "yarn"),
+      bun: bunCommand || generateCommand(activeNpmCommand, "bun"),
     };
-  }, [npmCommand, pnpmCommand, yarnCommand, bunCommand]);
+  }, [activeNpmCommand, pnpmCommand, yarnCommand, bunCommand]);
 
   return (
     <div

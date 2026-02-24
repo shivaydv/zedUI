@@ -27,3 +27,8 @@ yarn-error.log*
 .env*.local
 .vercel
 next-env.d.ts
+
+.agent
+.agents
+AI-AGENT-RULES.md
+skills-lock.json

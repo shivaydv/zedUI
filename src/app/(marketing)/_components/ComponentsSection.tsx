@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/ui/button";
+import { Loader } from "@/registry/ui/loader";
 
 const BENTO_ITEMS = [
   {
@@ -33,14 +34,14 @@ const BENTO_ITEMS = [
 ];
 
 const PREVIEW_COMPONENTS = [
-  { component: <Button variant="shine">Shine</Button> },
-  { component: <Button variant="animated-border">Pulse</Button> },
-  { component: <Button variant="rotate-border">Flux</Button> },
-  { component: <Button variant="glitch-brightness">Glitch</Button> },
-  { component: <Button variant="outline">Minimal</Button> },
-  { component: <Button variant="destructive">Critical</Button> },
-  { component: <Button variant="outline">Ghost</Button> },
-  { component: <Button variant="default">Secondary</Button> },
+  { component: <Button variant="premium">Premium</Button> },
+  { component: <Button variant="shine" >Shine</Button> },
+  { component: <Button variant="outline">Outline</Button> },
+  { component: <Button variant="ghost">Ghost</Button> },
+  { component: <Button variant="premium" isMagnetic>Magnetic</Button> },
+  { component: <Button variant="premium" isLoading>Loading</Button> },
+  { component: <Loader variant="orbital" size={40} /> },
+  { component: <Loader variant="morph" size={32} /> },
 ];
 
 export function ComponentsSection() {
@@ -79,18 +80,18 @@ export function ComponentsSection() {
         ))}
       </div>
 
-      {/* Extreme Minimal Showcases - Reduced size */}
+      {/* Extreme Minimal Showcases - Increased size */}
       <div className="space-y-10">
         <h2 className="text-xl font-medium text-foreground uppercase tracking-widest text-[13px] opacity-40">
           Components Showcase
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {PREVIEW_COMPONENTS.map((item, idx) => (
             <div
               key={idx}
-              className="bg-muted/3 border border-border aspect-square flex items-center justify-center rounded-xl transition-all duration-300 hover:border-foreground/20 hover:bg-muted/5 group"
+              className="bg-muted/3 border border-border aspect-square flex items-center justify-center rounded-2xl transition-all duration-300 hover:border-foreground/20 hover:bg-muted/10"
             >
-              <div className="scale-100 transition-transform duration-500 group-hover:scale-110">
+              <div className="flex items-center justify-center">
                 {item.component}
               </div>
             </div>

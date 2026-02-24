@@ -10,14 +10,13 @@ type Update = {
 
 export const UPDATES: Update[] = [
   {
-    href: "v2.0",
-    title: "Introducing Zed UI 2.0",
+    href: "v1",
+    title: "Introducing Zed UI v1.0",
     description:
-      "One of Zed UI's biggest launches yet is here. This new version introduces powerful components with variant props, a new CLI, and a complete redesign.",
-    author: "Gustavo Rodrigues",
+      "The official launch of Zed UI is here. Discover how we're redefining the modern web through 'Quiet Luxury', high-fidelity motion, and developer-centric primitives.",
+    author: "Shiva Yadav",
     banner: "/open-graphs/updates/v2.0.webp",
-    author_image: "https://github.com/guhrodrrigues.png",
-    date: "June 2, 2025",
+    author_image: "https://github.com/shivaydv.png",
+    date: "February 24, 2026",
   },
 ];
-

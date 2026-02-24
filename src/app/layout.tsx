@@ -9,6 +9,7 @@ import { ThemeProvider } from "./theme-provider";
 import { Header } from "@/components/site/navigation/Header";
 
 import { constructMetadata } from "@/config/metadata";
+import { Provider as JotaiProvider } from "jotai";
 
 export const metadata = constructMetadata();
 
@@ -32,8 +33,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <JotaiProvider>
+            <Header />
+            {children}
+          </JotaiProvider>
         </ThemeProvider>
       </body>
     </html>

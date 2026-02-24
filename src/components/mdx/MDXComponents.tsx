@@ -12,6 +12,7 @@ import type { PluggableList } from "unified";
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/registry/ui/button";
+import { Loader } from "@/registry/ui/loader";
 import {
   Tabs,
   TabsContent,
@@ -25,8 +26,7 @@ import { RegistryCodeBlock } from "@/components/site/docs/RegistryCodeBlock";
 import { Steps, Step } from "@/components/site/docs/Steps";
 import { CopyCode } from "@/components/site/docs/CopyCode";
 import { BlurImage } from "@/components/shared/BlurImage";
-import { BentoGrid, BentoCard } from "@/registry/ui/bento-grid";
-import { StackedSections } from "@/registry/ui/stacked-sections";
+import { DataTable } from "@/components/site/docs/DataTable";
 
 
 
@@ -55,7 +55,6 @@ const components: MDXComponents = {
       {children}
     </h1>
   ),
-  StackedSections: (props: any) => <StackedSections {...props} />,
   h2: ({ children, className, ...props }: any) => (
     <h2
       className={cn("font-semibold text-primary text-xl tracking-tight", className)}
@@ -196,12 +195,8 @@ const components: MDXComponents = {
       {children}
     </Button>
   ),
-  BentoGrid: ({ children, ...props }: any) => (
-    <BentoGrid {...props}>
-      {children}
-    </BentoGrid>
-  ),
-  BentoCard: (props: any) => <BentoCard {...props} />,
+  DataTable: (props: any) => <DataTable {...props} />,
+  Loader: (props: any) => <Loader {...props} />,
 };
 
 export function useMDXComponents(components: MDXComponents) {

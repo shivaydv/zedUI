@@ -51,14 +51,14 @@ export function CodeBlock({
           <CopyCode
             code={(() => {
               if (simpleCode) return simpleCode;
-              try {
-                if (customFilePath) return getFileContent(customFilePath, "");
-                if (fileName) return getFileContent("registry", fileName);
-                return "";
-              } catch (e) {
-                console.error(`CodeBlock Error: ${e}`);
-                return "// Error: Content not found";
+              if (customFilePath) {
+                try {
+                  return getFileContent(customFilePath, "");
+                } catch (e) {
+                  return "// Error: Content not found";
+                }
               }
+              return "";
             })()}
           />
         </div>

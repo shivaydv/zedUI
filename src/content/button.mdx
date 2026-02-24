@@ -1,630 +1,240 @@
 ---
 title: "Button"
-description: "Displays a simple or animated button."
+description: "A highly customizable button component with premium animations and 4 unique visual variants."
 slug: "button"
+isNew: true
 ---
 
 <div className="space-y-2">
 
 <div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
 
-## Animated Examples
+## Variants
 
 </div>
+
+<div className="mt-12">
+
+### Premium
+The default variant. A moody, deep-space aesthetic with subtle radial gradients and a sophisticated shadow profile.
+
+</div>
+
+<Tabs defaultValue="preview">
+<TabsList>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
+<TabsContent value="preview">
+<ComponentView isExpandable isRefreshable className="h-[200px] flex items-center justify-center">
+  <Button variant="premium">Explore More</Button>
+</ComponentView>
+</TabsContent>
+
+<TabsContent value="code">
+<CodeBlock contentClassName="h-fit">
+```tsx
+<Button variant="premium">Explore More</Button>
+```
+</CodeBlock>
+</TabsContent>
+</Tabs>
 
 <div className="mt-12">
 
 ### Shine
+Features a refined light sweep animation that triggers on hover, adding a layer of visual polish and "quiet luxury".
 
 </div>
 
 <Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
 <TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
 </TabsList>
 
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonShineExample() {
-  return (
-    <Button variant="shine">
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
 <TabsContent value="preview">
-
-<ComponentView isExpandable isRefreshable className="h-[223px] flex items-center justify-center">
-
-<Button variant="shine">
-	<span>Button</span>
-</Button>
-
+<ComponentView isExpandable isRefreshable className="h-[200px] flex items-center justify-center">
+  <Button variant="shine">Get Started</Button>
 </ComponentView>
-
 </TabsContent>
 
 <TabsContent value="code">
-
 <CodeBlock contentClassName="h-fit">
-
 ```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonShineExample() {
-  return (
-    <Button variant="shine">
-      Button
-    </Button>
-  )
-}
+<Button variant="shine">Get Started</Button>
 ```
-
 </CodeBlock>
-
 </TabsContent>
-
 </Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
-
-### Animated Border
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonAnimatedBorderExample() {
-  return (
-    <Button variant="animated-border">
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
-<TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button variant="animated-border">
-	<span>Button</span>
-</Button>
-
-</ComponentView>
-
-</TabsContent>
-
-<TabsContent value="code">
-
-<CodeBlock contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonAnimatedBorderExample() {
-  return (
-    <Button variant="animated-border">
-      Button
-    </Button>
-  )
-}
-```
-
-</CodeBlock>
-
-</TabsContent>
-
-</Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
-
-### Rotate Border
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonRotateBorderExample() {
-  return (
-    <Button variant="rotate-border">
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
-<TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button variant="rotate-border">
-	<span>Button</span>
-</Button>
-
-</ComponentView>
-
-</TabsContent>
-
-<TabsContent value="code">
-
-<CodeBlock contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonRotateBorderExample() {
-  return (
-    <Button variant="rotate-border">
-      Button
-    </Button>
-  )
-}
-```
-
-</CodeBlock>
-
-</TabsContent>
-
-</Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
-
-### Glitch Brightness
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonGlitchBrightnessExample() {
-  return (
-    <Button variant="glitch-brightness">
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
-<TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button variant="glitch-brightness">
-	<span>Button</span>
-</Button>
-
-</ComponentView>
-
-</TabsContent>
-
-<TabsContent value="code">
-
-<CodeBlock contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonGlitchBrightnessExample() {
-  return (
-    <Button variant="glitch-brightness">
-      Button
-    </Button>
-  )
-}
-```
-
-</CodeBlock>
-
-</TabsContent>
-
-</Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
-
-### Magnetic
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonMagneticExample() {
-  return (
-    <Button variant="outline" isMagnetic>
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
-<TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button variant="outline" isMagnetic>
-	<span>Button</span>
-</Button>
-
-</ComponentView>
-
-</TabsContent>
-
-<TabsContent value="code">
-
-<CodeBlock contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonMagneticExample() {
-  return (
-    <Button variant="outline" isMagnetic>
-      Button
-    </Button>
-  )
-}
-```
-
-</CodeBlock>
-
-</TabsContent>
-
-</Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
-
-<div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
-
-## Simple Examples
-
-</div>
 
 <div className="mt-12">
 
-### Default
-
-</div>
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonExample() {
-  return (
-    <Button>
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
-<TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button>
-	<span>Button</span>
-</Button>
-
-</ComponentView>
-
-</TabsContent>
-
-<TabsContent value="code">
-
-<CodeBlock contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonExample() {
-  return (
-    <Button>
-      Button
-    </Button>
-  )
-}
-```
-
-</CodeBlock>
-
-</TabsContent>
-
-</Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
-
 ### Outline
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonOutlineExample() {
-  return (
-    <Button variant="outline">
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
+A minimal, transparent glassmorphism style that adapts perfectly to any background.
 
 </div>
 
+<Tabs defaultValue="preview">
+<TabsList>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
 <TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button variant="outline">
-	<span>Button</span>
-</Button>
-
+<ComponentView isExpandable isRefreshable className="h-[200px] flex items-center justify-center">
+  <Button variant="outline">Learn More</Button>
 </ComponentView>
-
 </TabsContent>
 
 <TabsContent value="code">
-
 <CodeBlock contentClassName="h-fit">
-
 ```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonOutlineExample() {
-  return (
-    <Button variant="outline">
-      Button
-    </Button>
-  )
-}
+<Button variant="outline">Learn More</Button>
 ```
-
 </CodeBlock>
+</TabsContent>
+</Tabs>
 
+<div className="mt-12">
+
+### Ghost
+An ultra-minimal variant that only appears on hover. Perfect for navigation and low-priority actions.
+
+</div>
+
+<Tabs defaultValue="preview">
+<TabsList>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
+<TabsContent value="preview">
+<ComponentView isExpandable isRefreshable className="h-[200px] flex items-center justify-center">
+  <Button variant="ghost">Secondary Action</Button>
+</ComponentView>
 </TabsContent>
 
+<TabsContent value="code">
+<CodeBlock contentClassName="h-fit">
+```tsx
+<Button variant="ghost">Secondary Action</Button>
+```
+</CodeBlock>
+</TabsContent>
+</Tabs>
+
+<div className="mt-12">
+
+### Magnetic Effect
+Enhance any variant with a high-fidelity magnetic interaction that pulls the button toward the cursor.
+
+</div>
+
+<Tabs defaultValue="preview">
+<TabsList>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
+<TabsContent value="preview">
+<ComponentView isExpandable isRefreshable className="h-[200px] flex items-center justify-center">
+  <Button variant="premium" isMagnetic>Magnetic Power</Button>
+</ComponentView>
+</TabsContent>
+
+<TabsContent value="code">
+<CodeBlock contentClassName="h-fit">
+```tsx
+<Button variant="premium" isMagnetic>Magnetic Power</Button>
+```
+</CodeBlock>
+</TabsContent>
+</Tabs>
+
+<div className="mt-12">
+
+### Loading State
+Seamless transition from action to processing with a smooth opacity fade for the loader.
+
+</div>
+
+<Tabs defaultValue="preview">
+<TabsList>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
+<TabsContent value="preview">
+<ComponentView isExpandable isRefreshable className="h-[200px] flex items-center justify-center">
+  <Button isLoading>Processing</Button>
+</ComponentView>
+</TabsContent>
+
+<TabsContent value="code">
+<CodeBlock contentClassName="h-fit">
+```tsx
+<Button isLoading>Processing</Button>
+```
+</CodeBlock>
+</TabsContent>
 </Tabs>
 
 </div>
 
-<div className="space-y-2 pt-4">
-
-### Success
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonSuccessExample() {
-  return (
-    <Button variant="success">
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
-<TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button variant="success">
-	<span>Button</span>
-</Button>
-
-</ComponentView>
-
-</TabsContent>
-
-<TabsContent value="code">
-
-<CodeBlock contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonSuccessExample() {
-  return (
-    <Button variant="success">
-      Button
-    </Button>
-  )
-}
-```
-
-</CodeBlock>
-
-</TabsContent>
-
-</Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
-
-### Destructive
-
-<Tabs defaultValue="preview">
-
-<div className="flex items-center justify-between">
-
-<TabsList>
-	<TabsTrigger value="preview">Preview</TabsTrigger>
-	<TabsTrigger value="code">Code</TabsTrigger>
-</TabsList>
-
-<CopyCode
-	code={`import { Button } from "@/components/ui/button"
-
-export function ButtonDestructiveExample() {
-  return (
-    <Button variant="destructive">
-      Button
-    </Button>
-  )
-}`}
-	mode="text"
-/>
-
-</div>
-
-<TabsContent value="preview">
-
-<ComponentView className="h-[223px] flex items-center justify-center">
-
-<Button variant="destructive">
-	<span>Button</span>
-</Button>
-
-</ComponentView>
-
-</TabsContent>
-
-<TabsContent value="code">
-
-<CodeBlock contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-
-export function ButtonDestructiveExample() {
-  return (
-    <Button variant="destructive">
-      Button
-    </Button>
-  )
-}
-```
-
-</CodeBlock>
-
-</TabsContent>
-
-</Tabs>
-
-</div>
-
-<div className="space-y-2 pt-4">
+<div className="space-y-4 pt-16">
 
 <div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
 
-## Usage
+## Props
 
 </div>
 
-<CodeBlock className="mt-6" contentClassName="h-fit">
-
-```tsx
-import { Button } from "@/components/ui/button"
-```
-</CodeBlock>
-
-<CodeBlock className="mt-4" contentClassName="h-fit">
-
-```tsx
-<Button variant="glitch-brightness">Button</Button>
-```
-</CodeBlock>
+<DataTable
+  columns={[
+    { header: "Prop", accessor: "prop" },
+    { header: "Type", accessor: "type" },
+    { header: "Default", accessor: "default" },
+    { header: "Description", accessor: "description" },
+  ]}
+  data={[
+    {
+      prop: "variant",
+      type: '"premium" | "outline" | "shine" | "ghost"',
+      default: '"premium"',
+      description: "The visual style of the button.",
+    },
+    {
+      prop: "isMagnetic",
+      type: "boolean",
+      default: "false",
+      description: "Enables the magnetic cursor pull effect.",
+    },
+    {
+      prop: "isLoading",
+      type: "boolean",
+      default: "false",
+      description: "Displays a loading spinner and disables interaction.",
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Change the default rendered element to the one passed as a child.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes.",
+    },
+  ]}
+/>
 
 </div>
 
-<div className="space-y-2 pt-4">
+<div className="space-y-4 pt-12">
 
 <div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
 
@@ -633,90 +243,25 @@ import { Button } from "@/components/ui/button"
 </div>
 
 <Tabs defaultValue="cli">
-
-<div className="flex items-center justify-between">
-
 <TabsList className="pl-0">
-	<TabsTrigger value="cli">CLI</TabsTrigger>
-	<TabsTrigger value="manual">Manual</TabsTrigger>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
 
-</div>
-
 <TabsContent value="cli">
-
-<CommandBlock npmCommand="npx zed-ui add button" />
-
+  <CommandBlock npmCommand="npx shadcn@latest add https://zedui.vercel.app/registry/button.json" />
 </TabsContent>
 
 <TabsContent value="manual">
-
-<Steps>
-<Step title="Install the packages" number="1">
-
-<CommandBlock npmCommand="npm i motion @radix-ui/react-slot clsx tailwind-merge" />
-
-</Step>
-
-<Step title="Copy and paste the following code into your project" number="2">
-
-<RegistryCodeBlock name="button" />
-
-</Step>
-
-<Step title="Create a file with the path lib/utils.ts" number="3">
-
-<RegistryCodeBlock name="utils" type="lib" extension="ts" />
-
-</Step>
-
-<Step title="Add the following animations and colors in your CSS file" number="4">
-
-<CodeBlock fileName="globals.css" copyCode={false} contentClassName="h-fit">
-
-```css
-:root {
-  --main-background: oklch(0.97 0 0);
-  --main-foreground: oklch(0.925 0 0);
-  --primary: oklch(0 0 0);
-  --primary-foreground: oklch(37.1% 0 0);
-  --border: oklch(0.885 0 0);
-}
-
-.dark {
-  --main-background: oklch(0.145 0 0);
-  --main-foreground: oklch(0.269 0 0);
-  --primary: oklch(1 0 0);
-  --primary-foreground: oklch(0.97 0 0);
-  --border: oklch(0.26 0 0);
-}
-
-@theme inline {
-  --animate-shine: shine 6s linear infinite;
-  --animate-brightness: brightness 2.2s linear infinite;
-
-  @keyframes shine {
-    from { background-position: 0 0; }
-    to { background-position: -400% 0; }
-  }
-
-  @keyframes brightness {
-    0% { transform: skew(-13deg) translateX(-100%); }
-    100% { transform: skew(-13deg) translateX(100%); }
-  }
-}
-```
-
-</CodeBlock>
-
-</Step>
-
-<Step title="Update the import paths to match your project setup" number="5" />
-
-</Steps>
-
+  <Steps>
+    <Step title="Install dependencies" number="1">
+      <CommandBlock npmCommand="npm i motion @radix-ui/react-slot clsx tailwind-merge" />
+    </Step>
+    <Step title="Copy and paste the code" number="2">
+      <RegistryCodeBlock name="button" />
+    </Step>
+  </Steps>
 </TabsContent>
-
 </Tabs>
 
 </div>

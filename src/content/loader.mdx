@@ -1,0 +1,159 @@
+---
+title: "Loader"
+description: "A collection of premium, physics-based loaders for modern web applications."
+slug: "loader"
+isNew: true
+---
+
+<div className="space-y-2">
+
+<div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
+
+## Variants
+
+</div>
+
+<div className="mt-12">
+
+### Orbital
+A series of concentric rings rotating at varying speeds, creating a celestial orbital feel.
+
+</div>
+
+<Tabs defaultValue="preview">
+<TabsList>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
+<TabsContent value="preview">
+<ComponentView className="h-[200px] flex items-center justify-center">
+  <Loader variant="orbital" size={60} />
+</ComponentView>
+</TabsContent>
+
+<TabsContent value="code">
+<CodeBlock contentClassName="h-fit">
+```tsx
+import { Loader } from "@/components/ui/loader"
+
+export function OrbitalExample() {
+  return <Loader variant="orbital" size={60} />
+}
+```
+</CodeBlock>
+</TabsContent>
+</Tabs>
+
+<div className="mt-12">
+
+### Morph
+A geometric primitive that smoothly morphs between a square and a circle while rotating.
+
+</div>
+
+<Tabs defaultValue="preview">
+<TabsList>
+  <TabsTrigger value="preview">Preview</TabsTrigger>
+  <TabsTrigger value="code">Code</TabsTrigger>
+</TabsList>
+
+<TabsContent value="preview">
+<ComponentView className="h-[200px] flex items-center justify-center">
+  <Loader variant="morph" size={40} />
+</ComponentView>
+</TabsContent>
+
+<TabsContent value="code">
+<CodeBlock contentClassName="h-fit">
+```tsx
+import { Loader } from "@/components/ui/loader"
+
+export function MorphExample() {
+  return <Loader variant="morph" size={40} />
+}
+```
+</CodeBlock>
+</TabsContent>
+</Tabs>
+
+</div>
+
+<div className="space-y-4 pt-16">
+
+<div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
+
+## Props
+
+</div>
+
+<DataTable
+  columns={[
+    { header: "Prop", accessor: "prop" },
+    { header: "Type", accessor: "type" },
+    { header: "Default", accessor: "default" },
+    { header: "Description", accessor: "description" },
+  ]}
+  data={[
+    {
+      prop: "variant",
+      type: '"orbital" | "morph"',
+      default: '"orbital"',
+      description: "The visual style of the loader.",
+    },
+    {
+      prop: "size",
+      type: "number",
+      default: "40",
+      description: "The width and height of the loader in pixels.",
+    },
+    {
+      prop: "color",
+      type: "string",
+      default: '"currentColor"',
+      description: "The color of the loader elements.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes for custom styling.",
+    },
+  ]}
+/>
+
+</div>
+
+<div className="space-y-4 pt-12">
+
+<div className="pb-3 border-b dark:border-neutral-800/60 border-neutral-300/50">
+
+## Installation
+
+</div>
+
+<Tabs defaultValue="cli">
+
+<TabsList className="pl-0">
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  <CommandBlock npmCommand="npx shadcn@latest add https://zedui.vercel.app/registry/loader.json" />
+</TabsContent>
+
+<TabsContent value="manual">
+  <Steps>
+    <Step title="Install dependencies" number="1">
+      <CommandBlock npmCommand="npm i motion clsx tailwind-merge" />
+    </Step>
+    <Step title="Copy and paste the code" number="2">
+      <RegistryCodeBlock name="loader" />
+    </Step>
+  </Steps>
+</TabsContent>
+
+</Tabs>
+
+</div>

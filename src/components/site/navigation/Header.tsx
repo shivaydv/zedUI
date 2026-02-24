@@ -16,6 +16,7 @@ import { MobileMenu } from "./MobileMenu";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/shared/Logo";
 
 const ITEMS = [
   {
@@ -85,7 +86,7 @@ export function Header() {
             href="/"
             className="p-1 rounded outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
           >
-            <Icons.logo className="w-[70px]" />
+            <Logo/>
           </Link>
           <div className="flex items-center gap-5 [@media(max-width:662px)]:hidden">
             <div className="flex items-center gap-5">
