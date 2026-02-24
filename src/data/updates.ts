@@ -15,7 +15,7 @@ export const UPDATES: Update[] = [
     description:
       "The official launch of Zed UI is here. Discover how we're redefining the modern web through 'Quiet Luxury', high-fidelity motion, and developer-centric primitives.",
     author: "Shiva Yadav",
-    banner: "/open-graphs/updates/v2.0.webp",
+    banner: "/open-graphs/updates/v1.0.png",
     author_image: "https://github.com/shivaydv.png",
     date: "February 24, 2026",
   },
