@@ -68,7 +68,7 @@ export function Header() {
     <>
       <header
         className={cn(
-          "top-0 z-50 h-17 w-full transition-colors duration-200 ease-out border-b-[.75px] border-transparent",
+          "top-0 z-50 h-16 w-full transition-colors duration-200 ease-out border-b-[.75px] border-transparent",
           isDocsPage ? "sticky bg-background bottom-dotted" : "fixed",
           !isDocsPage &&
           isScrolled &&
@@ -84,9 +84,9 @@ export function Header() {
         >
           <Link
             href="/"
-            className="p-1 rounded outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
+            className="flex items-center p-1 rounded outline-none focus-visible:ring-1 focus-visible:ring-neutral-300/80 dark:focus-visible:ring-neutral-800"
           >
-            <Logo/>
+            <Logo />
           </Link>
           <div className="flex items-center gap-5 [@media(max-width:662px)]:hidden">
             <div className="flex items-center gap-5">

@@ -16,7 +16,7 @@ const BENTO_ITEMS = [
   {
     title: "Visual Fidelity",
     description: "Extreme attention to detail in every pixel.",
-    image: "/dummy-images/bento2.avif",
+    image: "/dummy-images/cta1.avif",
     colSpan: "md:col-span-1",
   },
   {
