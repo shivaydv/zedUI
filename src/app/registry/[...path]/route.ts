@@ -1,7 +1,24 @@
 import { NextRequest, NextResponse } from "next/server"
 import { registry } from "@/registry"
 import { getFileContent } from "@/utils/get-file-content"
-import path from "path"
+import { RegistryItem } from "@/registry/schema"
+
+function resolveItemWithContent(item: RegistryItem) {
+    return {
+        ...item,
+        files: item.files?.map((file) => {
+            try {
+                // The path in registry index is relative to 'src'
+                // e.g. "registry/ui/button.tsx"
+                const content = getFileContent("", file.path)
+                return { ...file, content }
+            } catch (error) {
+                console.error(`Failed to read file ${file.path}:`, error)
+                return file
+            }
+        }),
+    }
+}
 
 export async function GET(
     req: NextRequest,
@@ -12,6 +29,19 @@ export async function GET(
     // Handle /registry/index.json
     if (pathSegments.length === 1 && pathSegments[0] === "index.json") {
         return NextResponse.json(registry)
+    }
+
+    // Handle /registry/[name].json  (shadcn CLI format)
+    // e.g. /registry/button.json
+    if (pathSegments.length === 1 && pathSegments[0].endsWith(".json")) {
+        const name = pathSegments[0].replace(".json", "")
+        const item = registry.find((i) => i.name === name)
+
+        if (!item) {
+            return new NextResponse("Not Found", { status: 404 })
+        }
+
+        return NextResponse.json(resolveItemWithContent(item))
     }
 
     // Handle /registry/[namespace]/[name].json
@@ -31,27 +61,9 @@ export async function GET(
             return new NextResponse("Not Found", { status: 404 })
         }
 
-        // Resolve file contents
-        const itemWithContent = {
-            ...item,
-            files: item.files?.map((file) => {
-                try {
-                    // The path in registry index is relative to 'src'
-                    // e.g. "registry/ui/button.tsx"
-                    const content = getFileContent("", file.path)
-                    return {
-                        ...file,
-                        content,
-                    }
-                } catch (error) {
-                    console.error(`Failed to read file ${file.path}:`, error)
-                    return file
-                }
-            }),
-        }
-
-        return NextResponse.json(itemWithContent)
+        return NextResponse.json(resolveItemWithContent(item))
     }
 
     return new NextResponse("Not Found", { status: 404 })
 }
+
