@@ -10,6 +10,7 @@ import { Header } from "@/components/site/navigation/Header";
 
 import { constructMetadata } from "@/config/metadata";
 import { Provider as JotaiProvider } from "jotai";
+import Analytics from "@/components/analytics/analytics";
 
 export const metadata = constructMetadata();
 
@@ -38,6 +39,7 @@ export default function RootLayout({
             {children}
           </JotaiProvider>
         </ThemeProvider>
+         <Analytics />
       </body>
     </html>
   );
